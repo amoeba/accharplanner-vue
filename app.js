@@ -1,4 +1,6 @@
-var attr_max = 330;
+var attr_max = 330
+    level_min = 5,
+    level_max = 275;
 
 new Vue({
     el: '#app',
@@ -31,7 +33,14 @@ new Vue({
     },
     methods: {
       level_increase: function() {
-        this.level = this.level + 1;
+        if (this.level + 1 <= level_max) {
+          this.level = this.level + 1;
+        }
+      },
+      level_decrease: function() {
+        if (this.level - 1 >= level_min) {
+          this.level = this.level - 1;
+        }
       },
       attr_strength_inc: function() {
         if (this.strength == 100) {
