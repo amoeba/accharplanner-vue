@@ -1,0 +1,47 @@
+<div id="app">
+    <h3>
+      Debug
+    </h3>
+
+    <div>
+      Attr sum: {{attr_sum}} / 130
+    </div>
+    <h3>
+    Character
+    </h3>
+    <div>
+      Name: {{ name }}
+    </div>
+    <div>
+      Level: {{ level }}
+      <button v-on:click="level_increase">+</button>
+    </div>
+    <h3>
+      Attributes
+    </h3>
+    <div>
+       <ul>
+         <li>
+           Strength: {{ strength }}
+           <button v-on:click="attr_strength_inc">+</button>
+         </li>
+         <li>Endurance: {{ endurance }}</li>
+         <li>Coordination: {{ coordination }} </li>
+         <li>Quickness: {{ quickness }}</li>
+         <li>Focus: {{ focus }}</li>
+         <li>Self: {{ self }}</li>
+         <li>Health: {{ health }} </li>
+         <li>Stamina: {{ stamina }}</li>
+         <li>Mana: {{ mana }}</li>
+      </ul>
+    </div>
+    <h3>
+      Skills:
+    </h3>
+    <div>
+      Some Skill: {{ someskill }}
+    </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/vue/latest/vue.js"></script>
+<script src="app.js"></script>
