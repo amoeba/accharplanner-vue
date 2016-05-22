@@ -42,9 +42,11 @@ new Vue({
           this.level = this.level - 1;
         }
       },
-      attr_strength_inc: function() {
+      strength_increase: function() {
         if (this.strength == 100) {
-          return
+          return;
+        } else if (this.strength > 100) {
+          this.strength = 100;
         }
 
         this.strength = this.strength + 1;
