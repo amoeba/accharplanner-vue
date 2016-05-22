@@ -28,7 +28,12 @@ new Vue({
       	return this.strength * 2 + this.level;
  			},
       attr_sum: function() {
-        return this.strength + this.endurance + this.coordination + this.quickness + this.focus + this.self;
+        return this.strength +
+               this.endurance +
+               this.coordination +
+               this.quickness +
+               this.focus +
+               this.self;
       }
     },
     methods: {
