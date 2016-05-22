@@ -4,42 +4,43 @@
     </h3>
 
     <div>
-      Attr sum: {{attr_sum}} / 130
+        Attr sum: {{attr_sum}} / 130
     </div>
     <h3>
     Character
     </h3>
     <div>
-      Name: {{ name }}
+        Name: {{ name }}
     </div>
     <div>
-      Level: {{ level }}
-      <button v-on:click="level_increase">+</button>
+        Level: {{ level }}
+        <button v-on:click="level_increase">+</button>
+        <button v-on:click="level_decrease">-</button>
     </div>
     <h3>
       Attributes
     </h3>
     <div>
-       <ul>
-         <li>
-           Strength: {{ strength }}
-           <button v-on:click="attr_strength_inc">+</button>
-         </li>
-         <li>Endurance: {{ endurance }}</li>
-         <li>Coordination: {{ coordination }} </li>
-         <li>Quickness: {{ quickness }}</li>
-         <li>Focus: {{ focus }}</li>
-         <li>Self: {{ self }}</li>
-         <li>Health: {{ health }} </li>
-         <li>Stamina: {{ stamina }}</li>
-         <li>Mana: {{ mana }}</li>
-      </ul>
+        <ul>
+            <li>
+                Strength: {{ strength }}
+                <button v-on:click="attr_strength_inc">+</button>
+            </li>
+            <li>Endurance: {{ endurance }}</li>
+            <li>Coordination: {{ coordination }} </li>
+            <li>Quickness: {{ quickness }}</li>
+            <li>Focus: {{ focus }}</li>
+            <li>Self: {{ self }}</li>
+            <li>Health: {{ health }} </li>
+            <li>Stamina: {{ stamina }}</li>
+            <li>Mana: {{ mana }}</li>
+        </ul>
     </div>
     <h3>
       Skills:
     </h3>
     <div>
-      Some Skill: {{ someskill }}
+        Some Skill: {{ someskill }}
     </div>
 </div>
 
