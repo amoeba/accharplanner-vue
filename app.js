@@ -115,3 +115,6 @@ var vm = new Vue({
 vm.$watch('attributes', function(oldval, newval) {
   vm.update_skills(newval);
 }, { deep: true })
+
+// Initialize skill values
+vm.update_skills(vm.$get('attributes'));
