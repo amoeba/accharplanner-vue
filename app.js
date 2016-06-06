@@ -2,6 +2,20 @@ var attr_max = 330,
     level_min = 5,
     level_max = 275;
 
+// Skill functions
+var skills = {
+  arcane_lore : function(attributes) {
+    return parseInt(attributes.focus) / 3;
+  },
+  heavy_weapons : function(attributes) {
+    return (parseInt(attributes.strength) + parseInt(attributes.coordination)) / 3;
+  },
+  healing : function(attributes) {
+    return (parseInt(attributes.focus) + parseInt(attributes.coordination)) / 3;
+  }
+}
+
+
 var vm = new Vue({
   el: '#app',
   data: {
@@ -77,9 +91,9 @@ var vm = new Vue({
     update_skills: function(new_attributes) {
       console.log("update_skills...");
 
-      this.skills.arcane_lore.value =  parseInt(new_attributes.focus) / 3;
-      this.skills.heavy_weapons.value = (parseInt(new_attributes.strength) + parseInt(new_attributes.coordination)) / 3;
-      this.skills.healing.value =  (parseInt(new_attributes.focus) + parseInt(new_attributes.coordination)) / 3;
+      this.skills.arcane_lore.value =  skills.arcane_lore(new_attributes);
+      this.skills.heavy_weapons.value = skills.heavy_weapons(new_attributes);
+      this.skills.healing.value = skills.healing(new_attributes);
     },
     training_increase: function(event) {
       console.log('training_increase...');
