@@ -1,66 +1,117 @@
-var attr_max = 330
+var attr_max = 330,
     level_min = 5,
     level_max = 275;
 
-new Vue({
-    el: '#app',
-    data: {
-          'name': 'Kolthar',
-          'level' : 5,
-          'strength' : 30,
-          'endurance': 30,
-          'coordination': 30,
-          'quickness': 30,
-          'focus': 30,
-          'self': 30
+var vm = new Vue({
+  el: '#app',
+  data: {
+    'name': 'Kolthar',
+    'level': 5,
+    'attributes': {
+      'strength': 30,
+      'endurance': 30,
+      'coordination': 30,
+      'quickness': 30,
+      'focus': 30,
+      'self': 30
     },
-    computed: {
-      health: function() {
-        return this.endurance / 2;
+    'skills': {
+      'arcane_lore': {
+        name: 'arcane_lore',
+        training: 'specialized',
+        value: -1
       },
-      stamina: function() {
-      	return this.endurance;
+      'heavy_weapons': {
+        name: 'heavy_weapons',
+        training: 'trained',
+        value: -1
       },
-      mana: function() {
-      	return this.self
-      },
-    	someskill: function() {
-      	return this.strength * 2 + this.level;
- 			},
-      attr_sum: function() {
-        return this.strength +
-               this.endurance +
-               this.coordination +
-               this.quickness +
-               this.focus +
-               this.self;
-      }
-    },
-    methods: {
-      level_increase: function() {
-        if (this.level + 1 <= level_max) {
-          this.level = this.level + 1;
-        }
-      },
-      level_decrease: function() {
-        if (this.level - 1 >= level_min) {
-          this.level = this.level - 1;
-        }
-      },
-      strength_increase: function() {
-        if (this.strength == 100) {
-          return;
-        } else if (this.strength > 100) {
-          this.strength = 100;
-        }
-
-        this.strength = this.strength + 1;
-        var new_sum = this.strength + this.endurance + this.coordination;
-        var extra = new_sum - attr_max;
-
-        if (extra > 0) {
-          this.endurance = this.endurance - extra;
-        }
+      'healing': {
+        name: 'healing',
+        training: 'untrained',
+        value: -1
       }
     }
+  },
+  computed: {
+    health: function () {
+      return this.attributes.endurance / 2;
+    },
+    stamina: function () {
+      return this.attributes.endurance;
+    },
+    mana: function () {
+      return this.attributes.self
+    },
+    attr_sum: function () {
+      return this.attributes.strength +
+          this.attributes.endurance +
+          this.attributes.coordination +
+          this.attributes.quickness +
+          this.attributes.focus +
+          this.attributes.self;
+    },
+    used_skill_credits: function () {
+      return 10;
+    },
+    total_skill_credits: function () {
+      return 52 + parseInt(this.level);
+    },
+    specialized_skills: function () {
+      return _.filter(this.skills, function(skill) {
+        return skill.training == "specialized";
+      });
+    },
+    trained_skills: function () {
+      return _.filter(this.skills, function(skill) {
+        return skill.training == "trained";
+      });
+    },
+    untrained_skills: function () {
+      return _.filter(this.skills, function(skill) {
+        return skill.training == "untrained";
+      });
+    }
+  },
+  methods: {
+    update_skills: function(new_attributes) {
+      console.log("update_skills...");
+
+      this.skills.arcane_lore.value =  parseInt(new_attributes.focus) / 3;
+      this.skills.heavy_weapons.value = (parseInt(new_attributes.strength) + parseInt(new_attributes.coordination)) / 3;
+      this.skills.healing.value =  (parseInt(new_attributes.focus) + parseInt(new_attributes.coordination)) / 3;
+    },
+    training_increase: function(event) {
+      console.log('training_increase...');
+      console.log(event);
+      console.log(event.target.attributes[0].value);
+
+      var key = event.target.attributes[0].value;
+      var training = this.skills[key].training;
+
+      if (training == 'untrained') {
+        this.skills[key].training = 'trained';
+      } else if (training == 'trained') {
+        this.skills[key].training = 'specialized';
+      }
+    },
+    training_decrease: function(event) {
+      console.log('training_decrease...');
+      console.log(event);
+      console.log(event.target.attributes[0].value);
+
+      var key = event.target.attributes[0].value;
+      var training = this.skills[key].training;
+
+      if (training == 'specialized') {
+        this.skills[key].training = 'trained';
+      } else if (training == 'trained') {
+        this.skills[key].training = 'untrained';
+      }
+    }
+  }
 })
+
+vm.$watch('attributes', function(oldval, newval) {
+  vm.update_skills(newval);
+}, { deep: true })
