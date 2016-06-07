@@ -15,7 +15,6 @@ var skills = {
   }
 }
 
-
 var vm = new Vue({
   el: '#app',
   data: {
@@ -31,17 +30,17 @@ var vm = new Vue({
     },
     'skills': {
       'arcane_lore': {
-        name: 'arcane_lore',
+        name: 'Arcane Lore',
         training: 'specialized',
         value: -1
       },
       'heavy_weapons': {
-        name: 'heavy_weapons',
+        name: 'Heavy Weapons',
         training: 'trained',
         value: -1
       },
       'healing': {
-        name: 'healing',
+        name: 'Healing',
         training: 'untrained',
         value: -1
       }
