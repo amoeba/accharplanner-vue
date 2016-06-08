@@ -1,5 +1,3 @@
-
-
 <div id="app">
     <h3>Debug</h3>
     <div>Attr sum: {{attr_sum}}</div>
@@ -11,15 +9,47 @@
 
     <h3>Attributes</h3>
     <ul>
-      <li>Strength: <input type="text" v-model="attributes.strength" /></li>
-      <li>Endurance: <input type="text" v-model="attributes.endurance" /></li>
-      <li>Coordination: <input type="text" v-model="attributes.coordination" /></li>
-      <li>Quickness: <input type="text" v-model="attributes.quickness" /></li>
-      <li>Focus: <input type="text" v-model="attributes.focus" /></li>
-      <li>Self: <input type="text" v-model="attributes.self" /></li>
-      <li>Health: {{ health }}</li>
-      <li>Stamina: {{ stamina }}</li>
-      <li>Mana: {{ mana }}</li>
+      <li>
+        Strength: 
+        <input type="range" id="attributes.strength" min="30" value="30" max="100" step="1" v-model="attributes.strength">
+        <span>{{ attributes.strength }}</span>
+      </li>
+      <li>
+        Endurance:
+        <input type="range" id="attributes.endurance" min="30" value="30" max="100" step="1" v-model="attributes.endurance" />
+        <span>{{ attributes.endurance }}</span>
+      </li>
+      <li>
+        Coordination:
+        <input type="range" id="attributes.coordination" min="30" value="30" max="100" step="1" v-model="attributes.coordination" />
+        <span>{{ attributes.coordination }}</span>
+      </li>
+      <li>
+        Quickness:
+        <input type="range" id="attributes.quickness" min="30" value="30" max="100" step="1" v-model="attributes.quickness" />
+        <span>{{ attributes.quickness }}</span>
+      </li>
+      <li>
+        Focus:
+        <input type="range" id="attributes.focus" min="30" value="30" max="100" step="1" v-model="attributes.focus" />
+        <span>{{ attributes.focus }}</span>
+      </li>
+      <li>
+        Self:
+        <input type="range" id="attributes.self" min="30" value="30" max="100" step="1" v-model="attributes.self" />
+        <span>{{ attributes.self }}</span>
+      </li>
+      <li>
+        Health:
+        <span>{{ health }}</span>
+      </li>
+      <li>
+        Stamina:
+        <span>{{ stamina }}</span>
+      </li>
+      <li>Mana:
+        <span>{{ mana }}</span>
+      </li>
     </ul>
 
     <h3>Skills</h3>
