@@ -3,6 +3,17 @@ var attr_max = 330,
     level_max = 275;
 
 // Skill functions
+var bonus = function(training) {
+  var bonus = 0;
+
+  if (training == "specialized") {
+    console.log("Adding a value of 5 to training.");
+    bonus = 5;
+  }
+
+  return(bonus);
+}
+
 var skills = {
   arcane_lore : function(attributes) {
     return parseInt(attributes.focus) / 3;
@@ -30,16 +41,19 @@ var vm = new Vue({
     },
     'skills': {
       'arcane_lore': {
+        key: 'arcane_lore',
         name: 'Arcane Lore',
         training: 'specialized',
         value: -1
       },
       'heavy_weapons': {
+        key: 'heavy_weapons',
         name: 'Heavy Weapons',
         training: 'trained',
         value: -1
       },
       'healing': {
+        key: 'healing',
         name: 'Healing',
         training: 'untrained',
         value: -1
@@ -89,10 +103,11 @@ var vm = new Vue({
   methods: {
     update_skills: function(new_attributes) {
       console.log("update_skills...");
+      console.log(this.skills);
 
-      this.skills.arcane_lore.value =  skills.arcane_lore(new_attributes);
-      this.skills.heavy_weapons.value = skills.heavy_weapons(new_attributes);
-      this.skills.healing.value = skills.healing(new_attributes);
+      this.skills.arcane_lore.value =  skills.arcane_lore(new_attributes) + bonus(this.skills.arcane_lore.training);
+      this.skills.heavy_weapons.value = skills.heavy_weapons(new_attributes) + bonus(this.skills.heavy_weapons.training);
+      this.skills.healing.value = skills.healing(new_attributes) + bonus(this.skills.healing.training);
     },
     training_increase: function(event) {
       console.log('training_increase...');
@@ -107,6 +122,8 @@ var vm = new Vue({
       } else if (training == 'trained') {
         this.skills[key].training = 'specialized';
       }
+
+      this.update_skills(this.attributes);
     },
     training_decrease: function(event) {
       console.log('training_decrease...');
@@ -121,6 +138,8 @@ var vm = new Vue({
       } else if (training == 'trained') {
         this.skills[key].training = 'untrained';
       }
+     
+      this.update_skills(this.attributes);
     }
   }
 })

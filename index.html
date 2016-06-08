@@ -57,8 +57,8 @@
     <ul>
       <li v-for="skill in specialized_skills">
         {{ skill.name }}: {{ skill.value }}
-        <button v-on:click="training_increase" data-skill="{{skill.name}}">+</button>
-        <button v-on:click="training_decrease" data-skill="{{skill.name}}">-</button>
+        <button v-on:click="training_increase" data-skill="{{skill.key}}">+</button>
+        <button v-on:click="training_decrease" data-skill="{{skill.key}}">-</button>
       </li>
     </ul>
 
@@ -66,8 +66,8 @@
     <ul>
       <li v-for="skill in trained_skills">
         {{ skill.name }}: {{ skill.value }}
-        <button v-on:click="training_increase" data-skill="{{skill.name}}">+</button>
-        <button v-on:click="training_decrease" data-skill="{{skill.name}}">-</button>
+        <button v-on:click="training_increase" data-skill="{{skill.key}}">+</button>
+        <button v-on:click="training_decrease" data-skill="{{skill.key}}">-</button>
       </li>
     </ul>
 
@@ -75,8 +75,8 @@
     <ul>
       <li v-for="skill in untrained_skills">
         {{ skill.name }}: {{ skill.value }}
-        <button v-on:click="training_increase" data-skill="{{skill.name}}">+</button>
-        <button v-on:click="training_decrease" data-skill="{{skill.name}}">-</button>
+        <button v-on:click="training_increase" data-skill="{{skill.key}}">+</button>
+        <button v-on:click="training_decrease" data-skill="{{skill.key}}">-</button>
       </li>
     </ul>
 </div>
