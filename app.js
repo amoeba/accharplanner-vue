@@ -26,6 +26,72 @@ var skills = {
   }
 }
 
+
+var credits_by_level = { 
+	2: 1,
+	3: 2,
+	4: 3,
+	5: 4,
+	6: 5,
+	7: 6,
+	8: 7,
+	9: 8,
+	10: 9,
+	12:	10,
+	14:	11,
+	16:	12,
+	18:	13,
+	20:	14,
+	23:	15,
+	26:	16,
+	29:	17,
+	32:	18,
+	35:	19,
+	40:	20,
+	45:	21,
+	50:	22,
+	55:	23,
+	60:	24,
+	65:	25,
+	70:	26,
+	75:	27,
+	80:	28,
+	85:	29,
+	90:	30,
+	95:	31,
+	100: 32,
+	105: 33,
+	110: 34,
+	115: 35,
+	120: 36,
+	125: 37,
+	130: 38,
+	140: 39,
+	150: 40,
+	160: 41,
+	180: 42,
+	200: 43,
+	225: 44,
+	250: 45,
+	275: 46
+}
+
+function closest(array, value) {
+  var idx = 0;
+  for (var i = array.length - 1; i >= 0; i--) {
+    if(Math.abs(value - array[i]) < Math.abs(value - array[idx])){
+      idx = i;
+    }
+  }
+  
+  return array[idx];
+}
+
+var skill_credits = function(level) {
+  return credits_by_level[closest(_.keys(credits_by_level), level)];
+}
+
+
 var vm = new Vue({
   el: '#app',
   data: {
@@ -82,7 +148,7 @@ var vm = new Vue({
       return 10;
     },
     total_skill_credits: function () {
-      return 52 + parseInt(this.level);
+      return skill_credits(this.level);
     },
     specialized_skills: function () {
       return _.filter(this.skills, function(skill) {
@@ -105,9 +171,9 @@ var vm = new Vue({
       console.log("update_skills...");
       console.log(this.skills);
 
-      this.skills.arcane_lore.value =  skills.arcane_lore(new_attributes) + bonus(this.skills.arcane_lore.training);
-      this.skills.heavy_weapons.value = skills.heavy_weapons(new_attributes) + bonus(this.skills.heavy_weapons.training);
-      this.skills.healing.value = skills.healing(new_attributes) + bonus(this.skills.healing.training);
+      this.skills.arcane_lore.value =  Math.round(skills.arcane_lore(new_attributes) + bonus(this.skills.arcane_lore.training));
+      this.skills.heavy_weapons.value = Math.round(skills.heavy_weapons(new_attributes) + bonus(this.skills.heavy_weapons.training));
+      this.skills.healing.value = Math.round(skills.healing(new_attributes) + bonus(this.skills.healing.training));
     },
     training_increase: function(event) {
       console.log('training_increase...');
