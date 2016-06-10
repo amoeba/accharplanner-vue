@@ -6,7 +6,15 @@
     <h3>Character</h3>
     <div>Name: {{ name }}</div>
     <div>Level: <input type="text" v-model="level" /></div>
-
+    <div>
+      Extra Skill Credits:
+      <ul>
+        <li>Oswald: <input type="checkbox" v-model="extra_skill_credits.oswald" /></li>
+        <li>Railrea: <input type="checkbox" v-model="extra_skill_credits.railrea" /></li>
+        <li>Luminance (1): <input type="checkbox" v-model="extra_skill_credits.lum1" /></li>
+        <li>Luminance (2): <input type="checkbox" v-model="extra_skill_credits.lum2" /></li>
+      </ul>
+    </div>
     <h3>Attributes</h3>
     <ul>
       <li>

@@ -97,6 +97,12 @@ var vm = new Vue({
   data: {
     'name': 'Kolthar',
     'level': 5,
+    'extra_skill_credits' : {
+      'railrea': false,
+      'oswald': false,
+      'lum1': false,
+      'lum2': false
+    },
     'attributes': {
       'strength': 30,
       'endurance': 30,
@@ -148,7 +154,11 @@ var vm = new Vue({
       return 10;
     },
     total_skill_credits: function () {
-      return skill_credits(this.level);
+      return skill_credits(this.level) +
+        (this.extra_skill_credits.oswald ? 1 : 0) +
+        (this.extra_skill_credits.railrea ? 1 : 0) +
+        (this.extra_skill_credits.lum1 ? 1 : 0) +
+        (this.extra_skill_credits.lum2 ? 1 : 0);
     },
     specialized_skills: function () {
       return _.filter(this.skills, function(skill) {
