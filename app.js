@@ -28,16 +28,16 @@ var skills = {
 
 var cost = {
   arcane_lore: {
-    trained: 3,
-    specialized: 5
+    trained: 0,
+    specialized: 2
   },
   heavy_weapons: {
-    trained: 3,
-    specialized: 5
+    trained: 6,
+    specialized: 6
   },
   healing: {
-    trained: 3,
-    specialized: 5
+    trained: 6,
+    specialized: 4
   }
 }
 
