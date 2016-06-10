@@ -27,21 +27,48 @@ var skills = {
 }
 
 var cost = {
-  arcane_lore: {
-    trained: 0,
-    specialized: 2
-  },
-  heavy_weapons: {
-    trained: 6,
-    specialized: 6
-  },
-  healing: {
-    trained: 6,
-    specialized: 4
-  }
+  alchemy: { trained: 6, specialized: 6 },
+  arcane_lore: { trained: 0, specialized: 2 },
+  armor_tinkering: { trained: 4, specialized: -1 },
+  assess_creature: { trained: 0, specialized: 2 },
+  assess_person: { trained: 2, specialized: 2 },
+  cooking: { trained: 4, specialized: 4 },
+  create_enchantment: { trained: 8, specialized: 8 },
+  deception: { trained: 4, specialized: 2 },
+  dual_wield: { trained: 2, specialized: 2 },
+  dirty_fighting: { trained: 2, specialized: 2 },
+  finesse_weapons: { trained: 4, specialized: 4 },
+  fletching: { trained: 4, specialized: 4 },
+  healing: { trained: 6, specialized: 4 },
+  heavy_weapons: { trained: 6, specialized: 6 },
+  item_enchantment: { trained: 8, specialized: 8 },
+  item_tinkering: { trained: 2, specialized: -1 },
+  jump: { trained: 0, specialized: -1 },
+  leadership: { trained: 4, specialized: 2 },
+  life_magic: { trained: 12, specialized: 8 },
+  light_weapons: { trained: 4, specialized: 4 },
+  lockpick: { trained: 6, specialized: 4 },
+  loyalty: { trained: 0, specialized: 2 },
+  magic_defense: { trained: 0, specialized: 12 },
+  magic_item_tinkering: { trained: 4, specialized: -1 },
+  mana_conversion: { trained: 6, specialized: 6 },
+  melee_defense: { trained: 10, specialized: 10 },
+  missile_defense: { trained: 6, specialized: 4 },
+  missile_weapons: { trained: 6, specialized: 6 },
+  recklessness: { trained: 4, specialized: 2 },
+  run: { trained: 0, specialized: 4 },
+  salvaging: { trained: 0, specialized: -1 },
+  shield: { trained: 2, specialized: 2 },
+  sneak_attack: { trained: 4, specialized: 2 },
+  summoning: { trained: 8, specialized: 4 },
+  two_handed_combat: { trained: 8, specialized: 8 },
+  void_magic: { trained: 16, specialized: 12 },
+  war_magic: { trained: 16, specialized: 12 },
+  weapon_tinkering: { trained: 4, specialized: -1 }
 }
 
-
+// TODO: Add consts for unspeccable (eg armor tink)
+// TODO: Add consts for non-untrainable (eg healing)
 var credits_by_level = { 
 	2: 1,
 	3: 2,
