@@ -26,6 +26,21 @@ var skills = {
   }
 }
 
+var cost = {
+  arcane_lore: {
+    trained: 3,
+    specialized: 5
+  },
+  heavy_weapons: {
+    trained: 3,
+    specialized: 5
+  },
+  healing: {
+    trained: 3,
+    specialized: 5
+  }
+}
+
 
 var credits_by_level = { 
 	2: 1,
@@ -96,7 +111,7 @@ var vm = new Vue({
   el: '#app',
   data: {
     'name': 'Kolthar',
-    'level': 5,
+    'level': 275,
     'extra_skill_credits' : {
       'railrea': false,
       'oswald': false,
@@ -115,20 +130,20 @@ var vm = new Vue({
       'arcane_lore': {
         key: 'arcane_lore',
         name: 'Arcane Lore',
-        training: 'specialized',
-        value: -1
+        training: 'untrained',
+        value: -1,
       },
       'heavy_weapons': {
         key: 'heavy_weapons',
         name: 'Heavy Weapons',
-        training: 'trained',
-        value: -1
+        training: 'untrained',
+        value: -1,
       },
       'healing': {
         key: 'healing',
         name: 'Healing',
         training: 'untrained',
-        value: -1
+        value: -1,
       }
     }
   },
@@ -151,7 +166,11 @@ var vm = new Vue({
           this.attributes.self;
     },
     used_skill_credits: function () {
-      return 10;
+      return 0 + _.reduce(_.map(_.filter(this.skills, function(s) { return s.training == "trained"}), function(s) { return cost[s.key][s.training]; }), function(s,v) { return s + v}, 0) + 
+             _.reduce(_.map(_.filter(this.skills, function(s) { return s.training == "specialized"}), function(s) { return cost[s.key][s.training]; }), function(s,v) { return s + v}, 0);
+    },
+    remaining_skill_credits: function() { 
+      return this.total_skill_credits - this.used_skill_credits;
     },
     total_skill_credits: function () {
       return skill_credits(this.level) +
@@ -194,9 +213,17 @@ var vm = new Vue({
       var training = this.skills[key].training;
 
       if (training == 'untrained') {
-        this.skills[key].training = 'trained';
+        if (this.remaining_skill_credits >= cost[key]['trained']) {
+          this.skills[key].training = 'trained';
+        } else {
+          console.log("Not enough available skill credits.")
+        }
       } else if (training == 'trained') {
-        this.skills[key].training = 'specialized';
+        if (this.remaining_skill_credits >= cost[key]['specialized']) {
+          this.skills[key].training = 'specialized';
+        } else {
+          console.log("Not enough available skill credits.")
+        }
       }
 
       this.update_skills(this.attributes);
