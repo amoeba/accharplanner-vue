@@ -12,7 +12,7 @@ var bonus = function(training) {
   }
 
   return(bonus);
-}
+};
 
 var skills = {
   arcane_lore : function(attributes) {
@@ -24,7 +24,7 @@ var skills = {
   healing : function(attributes) {
     return (parseInt(attributes.focus) + parseInt(attributes.coordination)) / 3;
   }
-}
+};
 
 var cost = {
   alchemy: { trained: 6, specialized: 6 },
@@ -65,7 +65,7 @@ var cost = {
   void_magic: { trained: 16, specialized: 12 },
   war_magic: { trained: 16, specialized: 12 },
   weapon_tinkering: { trained: 4, specialized: -1 }
-}
+};
 
 // TODO: Add consts for unspeccable (eg armor tink)
 // TODO: Add consts for non-untrainable (eg healing)
@@ -116,9 +116,9 @@ var credits_by_level = {
 	225: 44,
 	250: 45,
 	275: 46
-}
+};
 
-function closest(array, value) {
+var closest = function(array, value) {
   var idx = 0;
   for (var i = array.length - 1; i >= 0; i--) {
     if(Math.abs(value - array[i]) < Math.abs(value - array[idx])){
@@ -127,11 +127,11 @@ function closest(array, value) {
   }
   
   return array[idx];
-}
+};
 
 var skill_credits = function(level) {
   return credits_by_level[closest(_.keys(credits_by_level), level)];
-}
+};
 
 
 var vm = new Vue({
@@ -182,7 +182,7 @@ var vm = new Vue({
       return this.attributes.endurance;
     },
     mana: function () {
-      return this.attributes.self
+      return this.attributes.self;
     },
     attr_sum: function () {
       return this.attributes.strength +
@@ -193,8 +193,8 @@ var vm = new Vue({
           this.attributes.self;
     },
     used_skill_credits: function () {
-      return 0 + _.reduce(_.map(_.filter(this.skills, function(s) { return s.training == "trained"}), function(s) { return cost[s.key][s.training]; }), function(s,v) { return s + v}, 0) + 
-             _.reduce(_.map(_.filter(this.skills, function(s) { return s.training == "specialized"}), function(s) { return cost[s.key][s.training]; }), function(s,v) { return s + v}, 0);
+      return 0 + _.reduce(_.map(_.filter(this.skills, function(s) { return s.training == "trained"; }), function(s) { return cost[s.key][s.training]; }), function(s,v) { return s + v; }, 0) + 
+             _.reduce(_.map(_.filter(this.skills, function(s) { return s.training == "specialized"; }), function(s) { return cost[s.key][s.training]; }), function(s,v) { return s + v; }, 0);
     },
     remaining_skill_credits: function() { 
       return this.total_skill_credits - this.used_skill_credits;
@@ -240,16 +240,16 @@ var vm = new Vue({
       var training = this.skills[key].training;
 
       if (training == 'untrained') {
-        if (this.remaining_skill_credits >= cost[key]['trained']) {
+        if (this.remaining_skill_credits >= cost[key].trained) {
           this.skills[key].training = 'trained';
         } else {
-          console.log("Not enough available skill credits.")
+          console.log("Not enough available skill credits.");
         }
       } else if (training == 'trained') {
-        if (this.remaining_skill_credits >= cost[key]['specialized']) {
+        if (this.remaining_skill_credits >= cost[key].specialized) {
           this.skills[key].training = 'specialized';
         } else {
-          console.log("Not enough available skill credits.")
+          console.log("Not enough available skill credits.");
         }
       }
 
@@ -272,11 +272,11 @@ var vm = new Vue({
       this.update_skills(this.attributes);
     }
   }
-})
+});
 
 vm.$watch('attributes', function(oldval, newval) {
   vm.update_skills(newval);
-}, { deep: true })
+}, { deep: true });
 
 // Initialize skill values
 vm.update_skills(vm.$get('attributes'));
