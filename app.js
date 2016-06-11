@@ -510,17 +510,14 @@ var vm = new Vue({
   },
   methods: {
     update_skills: function(new_attributes) {
-      console.log("update_skills...");
-      console.log(this.skills);
+      console.log("update_skills()");
 
       this.skills.arcane_lore.value =  Math.round(skills.arcane_lore(new_attributes) + bonus(this.skills.arcane_lore.training));
       this.skills.heavy_weapons.value = Math.round(skills.heavy_weapons(new_attributes) + bonus(this.skills.heavy_weapons.training));
       this.skills.healing.value = Math.round(skills.healing(new_attributes) + bonus(this.skills.healing.training));
     },
     training_increase: function(event) {
-      console.log('training_increase...');
-      console.log(event);
-      console.log(event.target.attributes[0].value);
+      console.log('training_increase()');
 
       var key = event.target.attributes[0].value;
       var training = this.skills[key].training;
@@ -542,10 +539,8 @@ var vm = new Vue({
       this.update_skills(this.attributes);
     },
     training_decrease: function(event) {
-      console.log('training_decrease...');
-      console.log(event);
-      console.log(event.target.attributes[0].value);
-
+      console.log('training_decrease()');
+      
       var key = event.target.attributes[0].value;
       var training = this.skills[key].training;
 
