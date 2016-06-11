@@ -141,6 +141,8 @@ var untrained_state = {
 // TODO: Add consts for unspeccable (eg armor tink)
 // TODO: Add consts for non-untrainable (eg healing)
 var credits_by_level = { 
+var credits_by_level = {
+  1: 0, 
 	2: 1,
 	3: 2,
 	4: 3,
