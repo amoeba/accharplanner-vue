@@ -483,7 +483,7 @@ var vm = new Vue({
       return this.total_skill_credits - this.used_skill_credits;
     },
     total_skill_credits: function () {
-      return skill_credits(this.level) +
+      return 52 + skill_credits(this.level) +
         (this.extra_skill_credits.oswald ? 1 : 0) +
         (this.extra_skill_credits.railrea ? 1 : 0) +
         (this.extra_skill_credits.lum1 ? 1 : 0) +
