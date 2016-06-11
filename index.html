@@ -15,53 +15,59 @@
         <li>Luminance (2): <input type="checkbox" v-model="extra_skill_credits.lum2" /></li>
       </ul>
     </div>
+
     <h3>Attributes</h3>
-    <ul>
-      <li>
-        Strength: 
-        <input type="range" id="attributes.strength" min="30" max="100" step="1" v-model="attributes.strength">
-        <span>{{ attributes.strength }}</span>
-      </li>
-      <li>
-        Endurance:
-        <input type="range" id="attributes.endurance" min="30" max="100" step="1" v-model="attributes.endurance" />
-        <span>{{ attributes.endurance }}</span>
-      </li>
-      <li>
-        Coordination:
-        <input type="range" id="attributes.coordination" min="30" max="100" step="1" v-model="attributes.coordination" />
-        <span>{{ attributes.coordination }}</span>
-      </li>
-      <li>
-        Quickness:
-        <input type="range" id="attributes.quickness" min="30" max="100" step="1" v-model="attributes.quickness" />
-        <span>{{ attributes.quickness }}</span>
-      </li>
-      <li>
-        Focus:
-        <input type="range" id="attributes.focus" min="30" max="100" step="1" v-model="attributes.focus" />
-        <span>{{ attributes.focus }}</span>
-      </li>
-      <li>
-        Self:
-        <input type="range" id="attributes.self" min="30" max="100" step="1" v-model="attributes.self" />
-        <span>{{ attributes.self }}</span>
-      </li>
-      <li>
-        Health:
-        <span>{{ health }}</span>
-      </li>
-      <li>
-        Stamina:
-        <span>{{ stamina }}</span>
-      </li>
-      <li>Mana:
-        <span>{{ mana }}</span>
-      </li>
-    </ul>
+    <table>
+      <tbody>
+        <tr>
+          <td>Strength</td>
+          <td><input type="range" id="attributes.strength" min="30" max="100" step="1" v-model="attributes.strength"></td>
+          <td>{{ attributes.strength }}</td>
+        </tr>
+        <tr>
+          <td>Endurance</td>
+          <td><input type="range" id="attributes.endurance" min="30" max="100" step="1" v-model="attributes.endurance"></td>
+          <td>{{ attributes.endurance }}</td>
+        </tr>
+        <tr>
+          <td>Coordination</td>
+          <td><input type="range" id="attributes.coordination" min="30" max="100" step="1" v-model="attributes.coordination"></td>
+          <td>{{ attributes.coordination }}</td>
+        </tr>
+        <tr>
+          <td>Quickness</td>
+          <td><input type="range" id="attributes.quickness" min="30" max="100" step="1" v-model="attributes.quickness"></td>
+          <td>{{ attributes.quickness }}</td>
+        </tr>
+        <tr>
+          <td>Focus</td>
+          <td><input type="range" id="attributes.focus" min="30" max="100" step="1" v-model="attributes.focus"></td>
+          <td>{{ attributes.focus }}</td>
+        </tr>
+        <tr>
+          <td>Self</td>
+          <td><input type="range" id="attributes.self" min="30" max="100" step="1" v-model="attributes.self"></td>
+          <td>{{ attributes.self }}</td>
+        </tr>
+        <tr>
+          <td>Health</td>
+          <td></td>
+          <td>{{ health }}</td>
+        </tr>
+        <tr>
+          <td>Stamina</td>
+          <td></td>
+          <td>{{ stamina }}</td>
+        </tr>
+        <tr>
+          <td>Mana</td>
+          <td></td>
+          <td>{{ mana }}</td>
+        </tr>
+      </tbody>
+    </table>
 
     <h3>Skills</h3>
-
     <table>
       <tbody>
         <tr>
