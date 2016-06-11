@@ -457,13 +457,13 @@ var vm = new Vue({
   },
   computed: {
     health: function () {
-      return this.attributes.endurance / 2;
+      return int(this.attributes.endurance / 2);
     },
     stamina: function () {
-      return this.attributes.endurance;
+      return int(this.attributes.endurance);
     },
     mana: function () {
-      return this.attributes.self;
+      return int(this.attributes.self);
     },
     attr_sum: function () {
       return this.attributes.strength +
