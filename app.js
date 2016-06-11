@@ -208,21 +208,21 @@ var skill_credits = function(level) {
 var vm = new Vue({
   el: '#app',
   data: {
-    'name': 'Kolthar',
-    'level': 275,
-    'extra_skill_credits' : {
-      'railrea': false,
-      'oswald': false,
-      'lum1': false,
-      'lum2': false
+    name: 'Kolthar',
+    level: 275,
+    extra_skill_credits: {
+      railrea: false,
+      oswald: false,
+      lum1: false,
+      lum2: false
     },
-    'attributes': {
-      'strength': 30,
-      'endurance': 30,
-      'coordination': 30,
-      'quickness': 30,
-      'focus': 30,
-      'self': 30
+    attributes: {
+      strength: 30,
+      endurance: 30,
+      coordination: 30,
+      quickness: 30,
+      focus: 30,
+      self: 30
     },
     skills: {
       alchemy: { 
