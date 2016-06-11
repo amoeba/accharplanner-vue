@@ -61,41 +61,47 @@
     </ul>
 
     <h3>Skills</h3>
-    <h4>Specialized</h4>
-    <ul>
-      <li v-for="skill in specialized_skills">
-        {{ skill.name }}: {{ skill.value }}
-        <button v-on:click="training_increase" data-skill="{{skill.key}}">+</button>
-        <button v-on:click="training_decrease" data-skill="{{skill.key}}">-</button>
-      </li>
-    </ul>
 
-    <h4>Trained</h4>
-    <ul>
-      <li v-for="skill in trained_skills">
-        {{ skill.name }}: {{ skill.value }}
-        <button v-on:click="training_increase" data-skill="{{skill.key}}">+</button>
-        <button v-on:click="training_decrease" data-skill="{{skill.key}}">-</button>
-      </li>
-    </ul>
-
-    <h4>Untrained</h4>
-    <ul>
-      <li v-for="skill in untrained_skills">
-        {{ skill.name }}: {{ skill.value }}
-        <button v-on:click="training_increase" data-skill="{{skill.key}}">+</button>
-        <button v-on:click="training_decrease" data-skill="{{skill.key}}">-</button>
-      </li>
-    </ul>
-
-    <h4>Unusable</h4>
-    <ul>
-      <li v-for="skill in unusable_skills">
-        {{ skill.name }}: {{ skill.value }}
-        <button v-on:click="training_increase" data-skill="{{skill.key}}">+</button>
-        <button v-on:click="training_decrease" data-skill="{{skill.key}}">-</button>
-      </li>
-    </ul>
+    <table>
+      <tbody>
+        <tr>
+          <td colspan="4">Specialized</td>
+        </tr>
+        <tr v-for="skill in specialized_skills">
+          <td>{{ skill.name }}</td>
+          <td>{{ skill.value }}</td>
+          <td><button v-on:click="training_increase" :skill="skill.key">+</button></td>
+          <td><button v-on:click="training_decrease" :skill="skill.key">-</button></td>
+        </tr>
+        <tr>
+          <td colspan="4">Trained</td>
+        </tr>
+        <tr v-for="skill in trained_skills">
+          <td>{{ skill.name }}</td>
+          <td>{{ skill.value }}</td>
+          <td><button v-on:click="training_increase" :skill="skill.key">+</button></td>
+          <td><button v-on:click="training_decrease" :skill="skill.key">-</button></td>
+        </tr>
+        <tr>
+          <td colspan="4">Untrained</td>
+        </tr>
+        <tr v-for="skill in untrained_skills">
+          <td>{{ skill.name }}</td>
+          <td>{{ skill.value }}</td>
+          <td><button v-on:click="training_increase" :skill="skill.key">+</button></td>
+          <td><button v-on:click="training_decrease" :skill="skill.key">-</button></td>
+        </tr>
+        <tr>
+          <td colspan="4">Unusable</td>
+        </tr>
+        <tr v-for="skill in unusable_skills">
+          <td>{{ skill.name }}</td>
+          <td>{{ skill.value }}</td>
+          <td><button v-on:click="training_increase" :skill="skill.key">+</button></td>
+          <td><button v-on:click="training_decrease" :skill="skill.key">-</button></td>
+        </tr>
+      </tbody>
+    </table>
 </div>
 
 <script src="underscore.js"></script>
