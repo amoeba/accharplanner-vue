@@ -509,12 +509,17 @@ var vm = new Vue({
     }
   },
   methods: {
-    update_skills: function(new_attributes) {
+    update_skills: function(attr) {
       console.log("update_skills()");
 
-      this.skills.arcane_lore.value =  Math.round(skills.arcane_lore(new_attributes) + bonus(this.skills.arcane_lore.training));
-      this.skills.heavy_weapons.value = Math.round(skills.heavy_weapons(new_attributes) + bonus(this.skills.heavy_weapons.training));
-      this.skills.healing.value = Math.round(skills.healing(new_attributes) + bonus(this.skills.healing.training));
+      var keys = _.keys(this.skills);
+
+      for (var i = 0; i < keys.length; i++) {
+        var key = keys[i];
+        var skill_fn = skills[key];
+
+        this.skills[key].value = Math.round(skill_fn(attr)) + bonus(this.skills[key].training);
+      }
     },
     training_increase: function(event) {
       console.log('training_increase()');
