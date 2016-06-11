@@ -26,6 +26,48 @@ var skills = {
   }
 };
 
+var int = parseint;
+var skills = {
+  alchemy:              function(a) { return (int(a.coordination) + int(a.focus)) / 3; },
+  arcane_lore:          function(a) { return (); },
+  armor_tinkering:      function(a) { return (); },
+  assess_creature:      function(a) { return (); },
+  assess_person:        function(a) { return (); },
+  cooking:              function(a) { return (); },
+  create_enchantment:   function(a) { return (); },
+  deception:            function(a) { return (); },
+  dual_wield:           function(a) { return (); },
+  dirty_fighting:       function(a) { return (); },
+  finesse_weapons:      function(a) { return (); },
+  fletching:            function(a) { return (); },
+  healing:              function(a) { return (); },
+  heavy_weapons:        function(a) { return (); },
+  item_enchantment:     function(a) { return (); },
+  item_tinkering:       function(a) { return (); },
+  jump:                 function(a) { return (); },
+  leadership:           function(a) { return (); },
+  life_magic:           function(a) { return (); },
+  light_weapons:        function(a) { return (); },
+  lockpick:             function(a) { return (); },
+  loyalty:              function(a) { return (); },
+  magic_defense:        function(a) { return (); },
+  magic_item_tinkering: function(a) { return (); },
+  mana_conversion:      function(a) { return (); },
+  melee_defense:        function(a) { return (); },
+  missile_defense:      function(a) { return (); },
+  missile_weapons:      function(a) { return (); },
+  recklessness:         function(a) { return (); },
+  run:                  function(a) { return (); },
+  salvaging:            function(a) { return (); },
+  shield:               function(a) { return (); },
+  sneak_attack:         function(a) { return (); },
+  summoning:            function(a) { return (); },
+  two_handed_combat:    function(a) { return (); },
+  void_magic:           function(a) { return (); },
+  war_magic:            function(a) { return (); },
+  weapon_tinkering:     function(a) { return (); }
+}
+
 var cost = {
   alchemy: { trained: 6, specialized: 6 },
   arcane_lore: { trained: 0, specialized: 2 },
