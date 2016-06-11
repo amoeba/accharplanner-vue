@@ -87,6 +87,15 @@
         <button v-on:click="training_decrease" data-skill="{{skill.key}}">-</button>
       </li>
     </ul>
+
+    <h4>Unusable</h4>
+    <ul>
+      <li v-for="skill in unusable_skills">
+        {{ skill.name }}: {{ skill.value }}
+        <button v-on:click="training_increase" data-skill="{{skill.key}}">+</button>
+        <button v-on:click="training_decrease" data-skill="{{skill.key}}">-</button>
+      </li>
+    </ul>
 </div>
 
 <script src="underscore.js"></script>

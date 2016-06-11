@@ -14,58 +14,46 @@ var bonus = function(training) {
   return(bonus);
 };
 
-var skills = {
-  arcane_lore : function(attributes) {
-    return parseInt(attributes.focus) / 3;
-  },
-  heavy_weapons : function(attributes) {
-    return (parseInt(attributes.strength) + parseInt(attributes.coordination)) / 3;
-  },
-  healing : function(attributes) {
-    return (parseInt(attributes.focus) + parseInt(attributes.coordination)) / 3;
-  }
-};
-
-var int = parseint;
+var int = parseInt;
 var skills = {
   alchemy:              function(a) { return (int(a.coordination) + int(a.focus)) / 3; },
-  arcane_lore:          function(a) { return (); },
-  armor_tinkering:      function(a) { return (); },
-  assess_creature:      function(a) { return (); },
-  assess_person:        function(a) { return (); },
-  cooking:              function(a) { return (); },
-  create_enchantment:   function(a) { return (); },
-  deception:            function(a) { return (); },
-  dual_wield:           function(a) { return (); },
-  dirty_fighting:       function(a) { return (); },
-  finesse_weapons:      function(a) { return (); },
-  fletching:            function(a) { return (); },
-  healing:              function(a) { return (); },
-  heavy_weapons:        function(a) { return (); },
-  item_enchantment:     function(a) { return (); },
-  item_tinkering:       function(a) { return (); },
-  jump:                 function(a) { return (); },
-  leadership:           function(a) { return (); },
-  life_magic:           function(a) { return (); },
-  light_weapons:        function(a) { return (); },
-  lockpick:             function(a) { return (); },
-  loyalty:              function(a) { return (); },
-  magic_defense:        function(a) { return (); },
-  magic_item_tinkering: function(a) { return (); },
-  mana_conversion:      function(a) { return (); },
-  melee_defense:        function(a) { return (); },
-  missile_defense:      function(a) { return (); },
-  missile_weapons:      function(a) { return (); },
-  recklessness:         function(a) { return (); },
-  run:                  function(a) { return (); },
-  salvaging:            function(a) { return (); },
-  shield:               function(a) { return (); },
-  sneak_attack:         function(a) { return (); },
-  summoning:            function(a) { return (); },
-  two_handed_combat:    function(a) { return (); },
-  void_magic:           function(a) { return (); },
-  war_magic:            function(a) { return (); },
-  weapon_tinkering:     function(a) { return (); }
+  arcane_lore:          function(a) { return int(a.focus) / 3; },
+  armor_tinkering:      function(a) { return (int(a.endurance) + int(a.focus)) / 2; },
+  assess_creature:      function(a) { return 0; },
+  assess_person:        function(a) { return 0; },
+  cooking:              function(a) { return (int(a.coordination) + int(a.focus)) / 3; },
+  creature_enchantment: function(a) { return (int(a.focus) + int(a.self)) / 4; },
+  deception:            function(a) { return 0; },
+  dual_wield:           function(a) { return (int(a.strength) + int(a.coordination)) / 3; },
+  dirty_fighting:       function(a) { return (int(a.strength) + int(a.coordination)) / 3; },
+  finesse_weapons:      function(a) { return (int(a.coordination) + int(a.quick)) / 3; },
+  fletching:            function(a) { return (int(a.coordination) + int(a.focus)) / 3; },
+  healing:              function(a) { return (int(a.focus) + int(a.coordination)) / 3; },
+  heavy_weapons:        function(a) { return (int(a.strength) + int(a.coordination)) / 3; },
+  item_enchantment:     function(a) { return (int(a.focus) + int(a.self)) / 4; },
+  item_tinkering:       function(a) { return (int(a.focus) + int(a.coordination)) / 2; },
+  jump:                 function(a) { return (int(a.strength) + int(a.coordination)) / 2; },
+  leadership:           function(a) { return 0; },
+  life_magic:           function(a) { return (int(a.focus) + int(a.self)) / 4; },
+  light_weapons:        function(a) { return (int(a.strength) + int(a.coordination)) / 3; },
+  lockpick:             function(a) { return (int(a.coordination) + int(a.focus)) / 3; },
+  loyalty:              function(a) { return 0; },
+  magic_defense:        function(a) { return (int(a.focus) + int(a.self)) / 7; },
+  magic_item_tinkering: function(a) { return int(a.focus); },
+  mana_conversion:      function(a) { return (int(a.focus) + int(a.self)) / 6; },
+  melee_defense:        function(a) { return (int(a.coordination) + int(a.quick)) / 3; },
+  missile_defense:      function(a) { return (int(a.coordination) + int(a.quick)) / 5; },
+  missile_weapons:      function(a) { return int(a.coordination) / 2; },
+  recklessness:         function(a) { return (int(a.strength) + int(a.quick)) / 3; },
+  run:                  function(a) { return int(a.quick); },
+  salvaging:            function(a) { return 0; },
+  shield:               function(a) { return (int(a.strength) + int(a.coordination)) / 2; },
+  sneak_attack:         function(a) { return (int(a.coordination) + int(a.quick)) / 3; },
+  summoning:            function(a) { return (endurance + int(a.self)) / 3; },
+  two_handed_combat:    function(a) { return (int(a.strength) + int(a.coordination)) / 3; },
+  void_magic:           function(a) { return (int(a.focus) + int(a.self)) / 4; },
+  war_magic:            function(a) { return (int(a.focus) + int(a.self)) / 4; },
+  weapon_tinkering:     function(a) { return (int(a.strength) + int(a.focus)) / 2; }
 }
 
 var cost = {
@@ -75,7 +63,7 @@ var cost = {
   assess_creature: { trained: 0, specialized: 2 },
   assess_person: { trained: 2, specialized: 2 },
   cooking: { trained: 4, specialized: 4 },
-  create_enchantment: { trained: 8, specialized: 8 },
+  creature_enchantment: { trained: 8, specialized: 8 },
   deception: { trained: 4, specialized: 2 },
   dual_wield: { trained: 2, specialized: 2 },
   dirty_fighting: { trained: 2, specialized: 2 },
@@ -107,6 +95,47 @@ var cost = {
   void_magic: { trained: 16, specialized: 12 },
   war_magic: { trained: 16, specialized: 12 },
   weapon_tinkering: { trained: 4, specialized: -1 }
+};
+
+var untrained_state = {
+  alchemy: 'unusable',
+  arcane_lore: 'trained',
+  armor_tinkering: 'untrained',
+  assess_creature: 'unusable',
+  assess_person: 'unusable',
+  cooking: 'unusable',
+  creature_enchantment: 'unusable',
+  deception: 'unusable',
+  dual_wield: 'unusable',
+  dirty_fighting: 'unusable',
+  finesse_weapons: 'untrained',
+  fletching: 'unusable',
+  healing: 'unusable',
+  heavy_weapons: 'untrained',
+  item_enchantment: 'unusable',
+  item_tinkering: 'untrained',
+  jump: 'trained',
+  leadership: 'untrained',
+  life_magic: 'unusable',
+  light_weapons: 'untrained',
+  lockpick: 'unusable',
+  loyalty: 'trained',
+  magic_defense: 'trained',
+  magic_item_tinkering: 'untrained',
+  mana_conversion: 'unusable',
+  melee_defense: 'untrained',
+  missile_defense: 'untrained',
+  missile_weapons: 'untrained',
+  recklessness: 'unusable',
+  run: 'trained',
+  salvaging: 'trained',
+  shield: 'untrained',
+  sneak_attack: 'unusable',
+  summoning: 'untrained',
+  two_handed_combat: 'untrained',
+  void_magic: 'unusable',
+  war_magic: 'unusable',
+  weapon_tinkering: 'untrained'
 };
 
 // TODO: Add consts for unspeccable (eg armor tink)
@@ -195,25 +224,235 @@ var vm = new Vue({
       'focus': 30,
       'self': 30
     },
-    'skills': {
-      'arcane_lore': {
+    skills: {
+      alchemy: { 
+        key: 'alchemy',
+        name: 'Alchemy',
+        training: 'unusable',
+        value: -1
+      },
+	    arcane_lore: { 
         key: 'arcane_lore',
         name: 'Arcane Lore',
-        training: 'untrained',
-        value: -1,
+        training: 'trained',
+        value: -1
       },
-      'heavy_weapons': {
+	    armor_tinkering: { 
+        key: 'armor_tinkering',
+        name: 'Armor Tinkering',
+        training: 'untrained',
+        value: -1
+      },
+	    assess_creature: { 
+        key: 'assess_creature',
+        name: 'Assess Creature',
+        training: 'unusable',
+        value: -1
+      },
+	    assess_person: { 
+        key: 'assess_person',
+        name: 'Assess Person',
+        training: 'unusable',
+        value: -1
+      },
+	    cooking: { 
+        key: 'cooking',
+        name: 'Cooking',
+        training: 'unusable',
+        value: -1
+      },
+	    creature_enchantment: { 
+        key: 'creature_enchantment',
+        name: 'Creature Enchantment',
+        training: 'unusable',
+        value: -1
+      },
+	    deception: { 
+        key: 'deception',
+        name: 'Deception',
+        training: 'unusable',
+        value: -1
+      },
+	    dual_wield: { 
+        key: 'dual_wield',
+        name: 'Dual Wield',
+        training: 'unusable',
+        value: -1
+      },
+	    dirty_fighting: { 
+        key: 'dirty_fighting',
+        name: 'Dirty Fighting',
+        training: 'unusable',
+        value: -1
+      },
+	    finesse_weapons: { 
+        key: 'finesse_weapons',
+        name: 'Finesse Weapons',
+        training: 'untrained',
+        value: -1
+      },
+	    fletching: { 
+        key: 'fletching',
+        name: 'Fletching',
+        training: 'unusable',
+        value: -1
+      },
+	    healing: { 
+        key: 'healing',
+        name: 'Healing',
+        training: 'unusable',
+        value: -1
+      },
+	    heavy_weapons: { 
         key: 'heavy_weapons',
         name: 'Heavy Weapons',
         training: 'untrained',
-        value: -1,
+        value: -1
       },
-      'healing': {
-        key: 'healing',
-        name: 'Healing',
+	    item_enchantment: { 
+        key: 'item_enchantment',
+        name: 'Item Enchantment',
+        training: 'unusable',
+        value: -1
+      },
+	    item_tinkering: { 
+        key: 'item_tinkering',
+        name: 'Item Tinkering',
         training: 'untrained',
-        value: -1,
-      }
+        value: -1
+      },
+	    jump: { 
+        key: 'jump',
+        name: 'Jump',
+        training: 'trained',
+        value: -1
+      },
+	    leadership: { 
+        key: 'leadership',
+        name: 'Leadership',
+        training: 'untrained',
+        value: -1
+      },
+	    life_magic: { 
+        key: 'life_magic',
+        name: 'Life Magic',
+        training: 'unusable',
+        value: -1
+      },
+	    light_weapons: { 
+        key: 'light_weapons',
+        name: 'Light Weapons',
+        training: 'untrained',
+        value: -1
+      },
+	    lockpick: { 
+        key: 'lockpick',
+        name: 'Lockpick',
+        training: 'unusable',
+        value: -1
+      },
+	    loyalty: { 
+        key: 'loyalty',
+        name: 'Loyalty',
+        training: 'trained',
+        value: -1
+      },
+	    magic_defense: { 
+        key: 'magic_defense',
+        name: 'Magic Defense',
+        training: 'trained',
+        value: -1
+      },
+	    magic_item_tinkering: { 
+        key: 'magic_item_tinkering',
+        name: 'Magic Item Tinkering',
+        training: 'untrained',
+        value: -1
+      },
+	    mana_conversion: { 
+        key: 'mana_conversion',
+        name: 'Alchemy',
+        training: 'unusable',
+        value: -1
+      },
+	    melee_defense: { 
+        key: 'melee_defense',
+        name: 'Melee Defense',
+        training: 'untrained',
+        value: -1
+      },
+	    missile_defense: { 
+        key: 'missile_defense',
+        name: 'Missile Defense',
+        training: 'untrained',
+        value: -1
+      },
+	    missile_weapons: { 
+        key: 'missile_weapons',
+        name: 'Missile Weapons',
+        training: 'untrained',
+        value: -1
+      },
+	    recklessness: { 
+        key: 'recklessness',
+        name: 'Recklessness',
+        training: 'unusable',
+        value: -1
+      },
+	    run: { 
+        key: 'run',
+        name: 'Run',
+        training: 'trained',
+        value: -1
+      },
+	    salvaging: { 
+        key: 'salvaging',
+        name: 'Salvaging',
+        training: 'trained',
+        value: -1
+      },
+	    shield: { 
+        key: 'shield',
+        name: 'Shield',
+        training: 'untrained',
+        value: -1
+      },
+	    sneak_attack: { 
+        key: 'sneak_attack',
+        name: 'Sneak Attack',
+        training: 'unusable',
+        value: -1
+      },
+	    summoning: { 
+        key: 'summoning',
+        name: 'Summoning',
+        training: 'untrained',
+        value: -1
+      },
+	    two_handed_combat: { 
+        key: 'two_handed_combat',
+        name: 'Two Handed Combat',
+        training: 'untrained',
+        value: -1
+      },
+	    void_magic: { 
+        key: 'void_magic',
+        name: 'Void Magic',
+        training: 'unusable',
+        value: -1
+      },
+	    war_magic: { 
+        key: 'war_magic',
+        name: 'War Magic',
+        training: 'unusable',
+        value: -1
+      },
+	    weapon_tinkering: { 
+        key: 'weapon_tinkering',
+        name: 'Weapon Tinkering',
+        training: 'untrained',
+        value: -1
+      },
     }
   },
   computed: {
@@ -262,6 +501,11 @@ var vm = new Vue({
       return _.filter(this.skills, function(skill) {
         return skill.training == "untrained";
       });
+    },
+    unusable_skills: function () {
+      return _.filter(this.skills, function(skill) {
+        return skill.training == "unusable";
+      });
     }
   },
   methods: {
@@ -281,7 +525,7 @@ var vm = new Vue({
       var key = event.target.attributes[0].value;
       var training = this.skills[key].training;
 
-      if (training == 'untrained') {
+      if (training == 'untrained' || training == 'unusable') {
         if (this.remaining_skill_credits >= cost[key].trained) {
           this.skills[key].training = 'trained';
         } else {
@@ -308,7 +552,7 @@ var vm = new Vue({
       if (training == 'specialized') {
         this.skills[key].training = 'trained';
       } else if (training == 'trained') {
-        this.skills[key].training = 'untrained';
+        this.skills[key].training = untrained_state[key];
       }
      
       this.update_skills(this.attributes);
