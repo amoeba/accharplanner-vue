@@ -47,32 +47,32 @@
       <tbody>
         <tr>
           <td>Strength</td>
-          <td><input type="range" id="strength" min="30" max="100" step="1" v-model="attributes.strength.base"></td>
+          <td><input type="range" id="strength" min="10" max="100" step="1" v-model="attributes.strength.base" v-on:change="attr_change($event)"></td>
           <td>({{ attributes.strength.base }}) {{ strength }}</td>
         </tr>
         <tr>
           <td>Endurance</td>
-          <td><input type="range" id="endurance" min="30" max="100" step="1" v-model="attributes.endurance.base"></td>
+          <td><input type="range" id="endurance" min="10" max="100" step="1" v-model="attributes.endurance.base" v-on:change="attr_change($event)"></td>
           <td>({{ attributes.endurance.base }}) {{ endurance }}</td>
         </tr>
         <tr>
           <td>Coordination</td>
-          <td><input type="range" id="coordination" min="30" max="100" step="1" v-model="attributes.coordination.base"></td>
+          <td><input type="range" id="coordination" min="10" max="100" step="1" v-model="attributes.coordination.base" v-on:change="attr_change($event)"></td>
           <td>({{ attributes.coordination.base }}) {{ coordination }}</td>
         </tr>
         <tr>
           <td>Quickness</td>
-          <td><input type="range" id="quickness" min="30" max="100" step="1" v-model="attributes.quickness.base"></td>
+          <td><input type="range" id="quickness" min="10" max="100" step="1" v-model="attributes.quickness.base" v-on:change="attr_change($event)"></td>
           <td>({{ attributes.quickness.base }}) {{ quickness }}</td>
         </tr>
         <tr>
           <td>Focus</td>
-          <td><input type="range" id="focus" min="30" max="100" step="1" v-model="attributes.focus.base"></td>
+          <td><input type="range" id="focus" min="10" max="100" step="1" v-model="attributes.focus.base" v-on:change="attr_change($event)"></td>
           <td>({{ attributes.focus.base }}) {{ focus }}</td>
         </tr>
         <tr>
           <td>Self</td>
-          <td><input type="range" id="self" min="30" max="100" step="1" v-model="attributes.self.base"></td>
+          <td><input type="range" id="self" min="10" max="100" step="1" v-model="attributes.self.base" v-on:change="attr_change($event)"></td>
           <td>({{ attributes.self.base }}) {{ self }}</td>
         </tr>
         <tr>

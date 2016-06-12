@@ -219,22 +219,28 @@ var vm = new Vue({
     },
     attributes: {
       strength: {
-        base: 30
+        key: 'strength',
+        base: 100
       },
       endurance: {
-        base: 30
+        key: 'endurance',
+        base: 100
       },
       coordination: {
-        base: 30
+        key: 'coordination',
+        base: 100
       },
       quickness: {
-        base: 30
+        key: 'quickness',
+        base: 10
       },
       focus: {
-        base: 30
+        key: 'focus',
+        base: 10
       },
       self: {
-        base: 30
+        key: 'self',
+        base: 10
       }
     },
     skills: {
@@ -660,6 +666,32 @@ var vm = new Vue({
     }
   },
   methods: {
+    attr_change: function(event) {
+      var attribute = event.target.id;
+
+      if (this.attr_sum > attr_max) {
+        this.dampen_other_attrs(attribute);
+      }
+    },
+    dampen_other_attrs: function(attribute) {
+      // Collect attributes that are NOT:
+      //   - The attribute in `attribute`
+      //   - Already at their minimum (10)
+
+      var to_dampen = _.filter(this.attributes, function(a) {
+        return a.key != attribute && a.base > 10;
+      });
+      var extra = this.attr_sum - attr_max;
+      
+      while (extra > 0) {
+        for (j = 0; j < to_dampen.length; j++) {
+          if (to_dampen[j].base > 10) {
+            this.attributes[to_dampen[j].key].base -= 1;
+            extra -= 1;
+          }
+        }
+      }
+    },
     update_skills: function(attr) {
       console.log("update_skills()");
       var attr = attr || this.attributes;
@@ -735,6 +767,7 @@ var vm = new Vue({
 
       // Unset major if we're setting the minor
       if (this.skills[key].major) {
+        console.log('major is true');
         this.skills[key].major = false;
       }
 
