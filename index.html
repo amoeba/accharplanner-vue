@@ -1,3 +1,28 @@
+<style type="text/css">
+  body {
+    font: 12pt "Helvetica Neue";
+  }
+
+  td { border: 1px solid #ccc; }
+  
+  .skill_group { 
+    font-weight: bold;
+  }
+
+  #extra-skill-credits {
+    display: inline;
+    margin: 0;
+    padding: 0;
+    list-style-type: none;
+  }
+
+  #extra-skill-credits li {
+    margin-right: 20px;
+    display: inline;
+  }
+
+</style>
+
 <div id="app">
     <h3>Debug</h3>
     <div>Attr sum: {{attr_sum}}</div>
@@ -8,11 +33,11 @@
     <div>Level: <input type="text" v-model="level" /></div>
     <div>
       Extra Skill Credits:
-      <ul>
-        <li>Oswald: <input type="checkbox" v-model="extra_skill_credits.oswald" /></li>
-        <li>Railrea: <input type="checkbox" v-model="extra_skill_credits.railrea" /></li>
-        <li>Luminance (1): <input type="checkbox" v-model="extra_skill_credits.lum1" /></li>
-        <li>Luminance (2): <input type="checkbox" v-model="extra_skill_credits.lum2" /></li>
+      <ul id="extra-skill-credits">
+        <li><label for="skill_oswald">Oswald: </label><input id="skill_oswald" type="checkbox" v-model="extra_skill_credits.oswald" /></li>
+        <li><label for="skill_railrea">Railrea: </label><input id="skill_railrea" type="checkbox" v-model="extra_skill_credits.railrea" /></li>
+        <li><label for="skill_lum1">Luminance (1): </label><input id="skill_lum1" type="checkbox" v-model="extra_skill_credits.lum1" /></li>
+        <li><label for="skill_lum2">Luminance (2): </label><input id="skill_lum2" type="checkbox" v-model="extra_skill_credits.lum2" /></li>
       </ul>
     </div>
 
@@ -69,9 +94,20 @@
 
     <h3>Skills</h3>
     <table>
+      <thead>
+        <tr>
+          <th>Skill</th>
+          <th>Value</th>
+          <th>Buffed?</th>
+          <th>Minor?</th>
+          <th>Major?</th>
+          <th>+</th>
+          <th>-</th>
+        </tr>
+      </thead>
       <tbody>
         <tr>
-          <td colspan="4">Specialized</td>
+          <td  class="skill_group" colspan="7">Specialized</td>
         </tr>
         <tr v-for="skill in specialized_skills">
           <td>{{ skill.name }}</td>
@@ -83,7 +119,7 @@
           <td><button v-on:click="training_decrease" :skill="skill.key">-</button></td>
         </tr>
         <tr>
-          <td colspan="4">Trained</td>
+          <td class="skill_group" colspan="7">Trained</td>
         </tr>
         <tr v-for="skill in trained_skills">
           <td>{{ skill.name }}</td>
@@ -95,7 +131,7 @@
           <td><button v-on:click="training_decrease" :skill="skill.key">-</button></td>
         </tr>
         <tr>
-          <td colspan="4">Untrained</td>
+          <td  class="skill_group" colspan="7">Untrained</td>
         </tr>
         <tr v-for="skill in untrained_skills">
           <td>{{ skill.name }}</td>
@@ -107,7 +143,7 @@
           <td><button v-on:click="training_decrease" :skill="skill.key">-</button></td>
         </tr>
         <tr>
-          <td colspan="4">Unusable</td>
+          <td  class="skill_group" colspan="7">Unusable</td>
         </tr>
         <tr v-for="skill in unusable_skills">
           <td>{{ skill.name }}</td>
