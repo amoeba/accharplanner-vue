@@ -76,6 +76,9 @@
         <tr v-for="skill in specialized_skills">
           <td>{{ skill.name }}</td>
           <td>{{ skill.value }}</td>
+          <td><input type="checkbox" v-on:change="buff" :skill="skill.key" /></td>
+          <td><input type="checkbox" v-on:change="minor" :skill="skill.key" /></td>
+          <td><input type="checkbox" v-on:change="major" :skill="skill.key" /></td>
           <td><button v-on:click="training_increase" :skill="skill.key">+</button></td>
           <td><button v-on:click="training_decrease" :skill="skill.key">-</button></td>
         </tr>
@@ -85,6 +88,9 @@
         <tr v-for="skill in trained_skills">
           <td>{{ skill.name }}</td>
           <td>{{ skill.value }}</td>
+          <td><input type="checkbox" v-on:change="buff" :skill="skill.key" /></td>
+          <td><input type="checkbox" v-on:change="minor" :skill="skill.key" /></td>
+          <td><input type="checkbox" v-on:change="major" :skill="skill.key" /></td>
           <td><button v-on:click="training_increase" :skill="skill.key">+</button></td>
           <td><button v-on:click="training_decrease" :skill="skill.key">-</button></td>
         </tr>
@@ -94,6 +100,9 @@
         <tr v-for="skill in untrained_skills">
           <td>{{ skill.name }}</td>
           <td>{{ skill.value }}</td>
+          <td><input type="checkbox" v-on:change="buff" :skill="skill.key" /></td>
+          <td><input type="checkbox" v-on:change="minor" :skill="skill.key" /></td>
+          <td><input type="checkbox" v-on:change="major" :skill="skill.key" /></td>
           <td><button v-on:click="training_increase" :skill="skill.key">+</button></td>
           <td><button v-on:click="training_decrease" :skill="skill.key">-</button></td>
         </tr>
@@ -103,6 +112,9 @@
         <tr v-for="skill in unusable_skills">
           <td>{{ skill.name }}</td>
           <td>{{ skill.value }}</td>
+          <td><input type="checkbox" v-on:change="buff" :skill="skill.key" /></td>
+          <td><input type="checkbox" v-on:change="minor" :skill="skill.key" /></td>
+          <td><input type="checkbox" v-on:change="major" :skill="skill.key" /></td>
           <td><button v-on:click="training_increase" :skill="skill.key">+</button></td>
           <td><button v-on:click="training_decrease" :skill="skill.key">-</button></td>
         </tr>

@@ -229,229 +229,343 @@ var vm = new Vue({
         key: 'alchemy',
         name: 'Alchemy',
         training: 'unusable',
-        value: -1
+        value: -1,
+        buffed: false,
+        minor: false,
+        major: false
       },
 	    arcane_lore: { 
         key: 'arcane_lore',
         name: 'Arcane Lore',
         training: 'trained',
-        value: -1
+        value: -1,
+        buffed: false,
+        minor: false,
+        major: false
       },
 	    armor_tinkering: { 
         key: 'armor_tinkering',
         name: 'Armor Tinkering',
         training: 'untrained',
-        value: -1
+        value: -1,
+        buffed: false,
+        minor: false,
+        major: false
       },
 	    assess_creature: { 
         key: 'assess_creature',
         name: 'Assess Creature',
         training: 'unusable',
-        value: -1
+        value: -1,
+        buffed: false,
+        minor: false,
+        major: false
       },
 	    assess_person: { 
         key: 'assess_person',
         name: 'Assess Person',
         training: 'unusable',
-        value: -1
+        value: -1,
+        buffed: false,
+        minor: false,
+        major: false
       },
 	    cooking: { 
         key: 'cooking',
         name: 'Cooking',
         training: 'unusable',
-        value: -1
+        value: -1,
+        buffed: false,
+        minor: false,
+        major: false
       },
 	    creature_enchantment: { 
         key: 'creature_enchantment',
         name: 'Creature Enchantment',
         training: 'unusable',
-        value: -1
+        value: -1,
+        buffed: false,
+        minor: false,
+        major: false
       },
 	    deception: { 
         key: 'deception',
         name: 'Deception',
         training: 'unusable',
-        value: -1
+        value: -1,
+        buffed: false,
+        minor: false,
+        major: false
       },
 	    dual_wield: { 
         key: 'dual_wield',
         name: 'Dual Wield',
         training: 'unusable',
-        value: -1
+        value: -1,
+        buffed: false,
+        minor: false,
+        major: false
       },
 	    dirty_fighting: { 
         key: 'dirty_fighting',
         name: 'Dirty Fighting',
         training: 'unusable',
-        value: -1
+        value: -1,
+        buffed: false,
+        minor: false,
+        major: false
       },
 	    finesse_weapons: { 
         key: 'finesse_weapons',
         name: 'Finesse Weapons',
         training: 'untrained',
-        value: -1
+        value: -1,
+        buffed: false,
+        minor: false,
+        major: false
       },
 	    fletching: { 
         key: 'fletching',
         name: 'Fletching',
         training: 'unusable',
-        value: -1
+        value: -1,
+        buffed: false,
+        minor: false,
+        major: false
       },
 	    healing: { 
         key: 'healing',
         name: 'Healing',
         training: 'unusable',
-        value: -1
+        value: -1,
+        buffed: false,
+        minor: false,
+        major: false
       },
 	    heavy_weapons: { 
         key: 'heavy_weapons',
         name: 'Heavy Weapons',
         training: 'untrained',
-        value: -1
+        value: -1,
+        buffed: false,
+        minor: false,
+        major: false
       },
 	    item_enchantment: { 
         key: 'item_enchantment',
         name: 'Item Enchantment',
         training: 'unusable',
-        value: -1
+        value: -1,
+        buffed: false,
+        minor: false,
+        major: false
       },
 	    item_tinkering: { 
         key: 'item_tinkering',
         name: 'Item Tinkering',
         training: 'untrained',
-        value: -1
+        value: -1,
+        buffed: false,
+        minor: false,
+        major: false
       },
 	    jump: { 
         key: 'jump',
         name: 'Jump',
         training: 'trained',
-        value: -1
+        value: -1,
+        buffed: false,
+        minor: false,
+        major: false
       },
 	    leadership: { 
         key: 'leadership',
         name: 'Leadership',
         training: 'untrained',
-        value: -1
+        value: -1,
+        buffed: false,
+        minor: false,
+        major: false
       },
 	    life_magic: { 
         key: 'life_magic',
         name: 'Life Magic',
         training: 'unusable',
-        value: -1
+        value: -1,
+        buffed: false,
+        minor: false,
+        major: false
       },
 	    light_weapons: { 
         key: 'light_weapons',
         name: 'Light Weapons',
         training: 'untrained',
-        value: -1
+        value: -1,
+        buffed: false,
+        minor: false,
+        major: false
       },
 	    lockpick: { 
         key: 'lockpick',
         name: 'Lockpick',
         training: 'unusable',
-        value: -1
+        value: -1,
+        buffed: false,
+        minor: false,
+        major: false
       },
 	    loyalty: { 
         key: 'loyalty',
         name: 'Loyalty',
         training: 'trained',
-        value: -1
+        value: -1,
+        buffed: false,
+        minor: false,
+        major: false
       },
 	    magic_defense: { 
         key: 'magic_defense',
         name: 'Magic Defense',
         training: 'trained',
-        value: -1
+        value: -1,
+        buffed: false,
+        minor: false,
+        major: false
       },
 	    magic_item_tinkering: { 
         key: 'magic_item_tinkering',
         name: 'Magic Item Tinkering',
         training: 'untrained',
-        value: -1
+        value: -1,
+        buffed: false,
+        minor: false,
+        major: false
       },
 	    mana_conversion: { 
         key: 'mana_conversion',
         name: 'Alchemy',
         training: 'unusable',
-        value: -1
+        value: -1,
+        buffed: false,
+        minor: false,
+        major: false
       },
 	    melee_defense: { 
         key: 'melee_defense',
         name: 'Melee Defense',
         training: 'untrained',
-        value: -1
+        value: -1,
+        buffed: false,
+        minor: false,
+        major: false
       },
 	    missile_defense: { 
         key: 'missile_defense',
         name: 'Missile Defense',
         training: 'untrained',
-        value: -1
+        value: -1,
+        buffed: false,
+        minor: false,
+        major: false
       },
 	    missile_weapons: { 
         key: 'missile_weapons',
         name: 'Missile Weapons',
         training: 'untrained',
-        value: -1
+        value: -1,
+        buffed: false,
+        minor: false,
+        major: false
       },
 	    recklessness: { 
         key: 'recklessness',
         name: 'Recklessness',
         training: 'unusable',
-        value: -1
+        value: -1,
+        buffed: false,
+        minor: false,
+        major: false
       },
 	    run: { 
         key: 'run',
         name: 'Run',
         training: 'trained',
-        value: -1
+        value: -1,
+        buffed: false,
+        minor: false,
+        major: false
       },
 	    salvaging: { 
         key: 'salvaging',
         name: 'Salvaging',
         training: 'trained',
-        value: -1
+        value: -1,
+        buffed: false,
+        minor: false,
+        major: false
       },
 	    shield: { 
         key: 'shield',
         name: 'Shield',
         training: 'untrained',
-        value: -1
+        value: -1,
+        buffed: false,
+        minor: false,
+        major: false
       },
 	    sneak_attack: { 
         key: 'sneak_attack',
         name: 'Sneak Attack',
         training: 'unusable',
-        value: -1
+        value: -1,
+        buffed: false,
+        minor: false,
+        major: false
       },
 	    summoning: { 
         key: 'summoning',
         name: 'Summoning',
         training: 'untrained',
-        value: -1
+        value: -1,
+        buffed: false,
+        minor: false,
+        major: false
       },
 	    two_handed_combat: { 
         key: 'two_handed_combat',
         name: 'Two Handed Combat',
         training: 'untrained',
-        value: -1
+        value: -1,
+        buffed: false,
+        minor: false,
+        major: false
       },
 	    void_magic: { 
         key: 'void_magic',
         name: 'Void Magic',
         training: 'unusable',
-        value: -1
+        value: -1,
+        buffed: false,
+        minor: false,
+        major: false
       },
 	    war_magic: { 
         key: 'war_magic',
         name: 'War Magic',
         training: 'unusable',
-        value: -1
+        value: -1,
+        buffed: false,
+        minor: false,
+        major: false
       },
 	    weapon_tinkering: { 
         key: 'weapon_tinkering',
         name: 'Weapon Tinkering',
         training: 'untrained',
-        value: -1
+        value: -1,
+        buffed: false,
+        minor: false,
+        major: false
       },
     }
   },
@@ -511,14 +625,18 @@ var vm = new Vue({
   methods: {
     update_skills: function(attr) {
       console.log("update_skills()");
-
+      var attr = attr || this.attributes;
       var keys = _.keys(this.skills);
 
       for (var i = 0; i < keys.length; i++) {
         var key = keys[i];
         var skill_fn = skills[key];
 
-        this.skills[key].value = Math.round(skill_fn(attr)) + bonus(this.skills[key].training);
+        this.skills[key].value = Math.round(skill_fn(attr)) + 
+          bonus(this.skills[key].training) +
+          (this.skills[key].buffed ? 60 : 0) +
+          (this.skills[key].minor ? 5 : 0) +
+          (this.skills[key].major ? 15 : 0);
       }
     },
     training_increase: function(event) {
@@ -556,6 +674,39 @@ var vm = new Vue({
       }
      
       this.update_skills(this.attributes);
+    },
+    buff: function(event) {
+      console.log('buff()');
+
+      var key = event.target.attributes['skill'].value;
+      this.skills[key].buffed = event.target.checked;
+      this.update_skills();
+    },
+    minor: function(event) {
+      console.log('buff()');
+
+      var key = event.target.attributes['skill'].value;
+
+      // Unset major if we're setting the minor
+      if (this.skills[key].major) {
+        this.skills[key].major = false;
+      }
+
+      this.skills[key].minor = event.target.checked;
+      this.update_skills();
+    },
+    major: function(event) {
+      console.log('buff()');
+
+      var key = event.target.attributes['skill'].value;
+
+      // Unset minor if we're setting the minor
+      if (this.skills[key].minor) {
+        this.skills[key].minor = false;
+      }
+
+      this.skills[key].major = event.target.checked;
+      this.update_skills();
     }
   }
 });
