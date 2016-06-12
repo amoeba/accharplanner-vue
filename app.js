@@ -765,7 +765,7 @@ var vm = new Vue({
 
         this.skills[key].value = Math.round(skill_fn(attr)) + 
           bonus(this.skills[key].training) +
-          (this.skills[key].buffed ? 60 : 0) +
+          (this.skills[key].buffed ? 50 : 0) +
           (this.skills[key].minor ? 5 : 0) +
           (this.skills[key].major ? 15 : 0);
       }
