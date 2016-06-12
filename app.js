@@ -243,6 +243,23 @@ var vm = new Vue({
         base: 10
       }
     },
+    vitals: {
+      health: {
+        buffed: false,
+        minor: false,
+        major: false,
+      },
+      stamina: {
+        buffed: false,
+        minor: false,
+        major: false,
+      },
+      mana: {
+        buffed: false,
+        minor: false,
+        major: false,
+      },
+    },
     skills: {
       alchemy: { 
         key: 'alchemy',
@@ -591,27 +608,45 @@ var vm = new Vue({
   computed: {
     strength: function() {
       return int(this.attributes.strength.base) +
-        (this.max ? 190 : 0);
+        (this.max ? 190 : 0) +
+        (this.attributes.strength.buffed ? 50 : 0) +
+        (this.attributes.strength.minor ? 5 : 0) +
+        (this.attributes.strength.major ? 15 : 0);
     },
     endurance: function() {
       return int(this.attributes.endurance.base) +
-        (this.max ? 190 : 0);
+        (this.max ? 190 : 0) +
+        (this.attributes.endurance.buffed ? 50 : 0) +
+        (this.attributes.endurance.minor ? 5 : 0) +
+        (this.attributes.endurance.major ? 15 : 0);
     },
     coordination: function() {
       return int(this.attributes.coordination.base) +
-        (this.max ? 190 : 0);
+        (this.max ? 190 : 0) +
+        (this.attributes.coordination.buffed ? 50 : 0) +
+        (this.attributes.coordination.minor ? 5 : 0) +
+        (this.attributes.coordination.major ? 15 : 0);
     },
     quickness: function() {
       return int(this.attributes.quickness.base) +
-        (this.max ? 190 : 0);
+        (this.max ? 190 : 0) +
+        (this.attributes.quickness.buffed ? 50 : 0) +
+        (this.attributes.quickness.minor ? 5 : 0) +
+        (this.attributes.quickness.major ? 15 : 0);
     },
     focus: function() {
       return int(this.attributes.focus.base) +
-        (this.max ? 190 : 0);
+        (this.max ? 190 : 0) +
+        (this.attributes.focus.buffed ? 50 : 0) +
+        (this.attributes.focus.minor ? 5 : 0) +
+        (this.attributes.focus.major ? 15 : 0);
     },
     self: function() {
       return int(this.attributes.self.base) +
-        (this.max ? 190 : 0);
+        (this.max ? 190 : 0) +
+        (this.attributes.self.buffed ? 50 : 0) +
+        (this.attributes.self.minor ? 5 : 0) +
+        (this.attributes.self.major ? 15 : 0);
     },
     health: function () {
       return int(this.endurance / 2);
@@ -621,6 +656,24 @@ var vm = new Vue({
     },
     mana: function () {
       return int(this.self);
+    },
+    health_realized: function () {
+      return int(this.endurance / 2) +
+        (this.vitals.health.buffed ? 50 : 0) +
+        (this.vitals.health.minor ? 5 : 0) +
+        (this.vitals.health.major ? 15 : 0);
+    },
+    stamina_realized: function () {
+      return int(this.endurance) +
+        (this.vitals.stamina.buffed ? 50 : 0) +
+        (this.vitals.stamina.minor ? 5 : 0) +
+        (this.vitals.stamina.major ? 15 : 0);
+    },
+    mana_realized: function () {
+      return int(this.mana) +
+        (this.vitals.mana.buffed ? 50 : 0) +
+        (this.vitals.mana.minor ? 5 : 0) +
+        (this.vitals.mana.major ? 15 : 0);
     },
     attr_sum: function () {
       return this.attributes.strength.base +

@@ -44,51 +44,98 @@
 
     <h3>Attributes</h3>
     <table>
+      <thead>
+        <tr>
+          <th>Attribute</th>
+          <th>Buffed?</th>
+          <th>Minor?</th>
+          <th>Major?</th>
+          <th></th>
+          <th>Base</th>
+          <th>Actual</th>
+        </tr>
+      </thead>
       <tbody>
         <tr>
           <td>Strength</td>
+          <td><input type="checkbox" v-model="attributes.strength.buffed" /></td>
+          <td><input type="checkbox" v-model="attributes.strength.minor" /></td>
+          <td><input type="checkbox" v-model="attributes.strength.major" /></td>
           <td><input type="range" id="strength" min="10" max="100" step="1" v-model="attributes.strength.base" v-on:change="attr_change($event)"></td>
-          <td>({{ attributes.strength.base }}) {{ strength }}</td>
+          <td>{{ attributes.strength.base }}</td>
+          <td>{{ strength }}</td>
         </tr>
         <tr>
           <td>Endurance</td>
+          <td><input type="checkbox" v-model="attributes.endurance.buffed" /></td>
+          <td><input type="checkbox" v-model="attributes.endurance.minor" /></td>
+          <td><input type="checkbox" v-model="attributes.endurance.major" /></td>
           <td><input type="range" id="endurance" min="10" max="100" step="1" v-model="attributes.endurance.base" v-on:change="attr_change($event)"></td>
-          <td>({{ attributes.endurance.base }}) {{ endurance }}</td>
+          <td>{{ attributes.endurance.base }}</td>
+          <td>{{ endurance }}</td>
         </tr>
         <tr>
           <td>Coordination</td>
+          <td><input type="checkbox" v-model="attributes.coordination.buffed" /></td>
+          <td><input type="checkbox" v-model="attributes.coordination.minor" /></td>
+          <td><input type="checkbox" v-model="attributes.coordination.major" /></td>
           <td><input type="range" id="coordination" min="10" max="100" step="1" v-model="attributes.coordination.base" v-on:change="attr_change($event)"></td>
-          <td>({{ attributes.coordination.base }}) {{ coordination }}</td>
+          <td>{{ attributes.coordination.base }}</td>
+          <td>{{ coordination }}</td>
         </tr>
         <tr>
           <td>Quickness</td>
+          <td><input type="checkbox" v-model="attributes.quickness.buffed" /></td>
+          <td><input type="checkbox" v-model="attributes.quickness.minor" /></td>
+          <td><input type="checkbox" v-model="attributes.quickness.major" /></td>
           <td><input type="range" id="quickness" min="10" max="100" step="1" v-model="attributes.quickness.base" v-on:change="attr_change($event)"></td>
-          <td>({{ attributes.quickness.base }}) {{ quickness }}</td>
+          <td>{{ attributes.quickness.base }}</td>
+          <td>{{ quickness }}</td>
         </tr>
         <tr>
           <td>Focus</td>
+          <td><input type="checkbox" v-model="attributes.focus.buffed" /></td>
+          <td><input type="checkbox" v-model="attributes.focus.minor" /></td>
+          <td><input type="checkbox" v-model="attributes.focus.major" /></td>
           <td><input type="range" id="focus" min="10" max="100" step="1" v-model="attributes.focus.base" v-on:change="attr_change($event)"></td>
-          <td>({{ attributes.focus.base }}) {{ focus }}</td>
+          <td>{{ attributes.focus.base }}</td>
+          <td>{{ focus }}</td>
         </tr>
         <tr>
           <td>Self</td>
+          <td><input type="checkbox" v-model="attributes.self.buffed" /></td>
+          <td><input type="checkbox" v-model="attributes.self.minor" /></td>
+          <td><input type="checkbox" v-model="attributes.self.major" /></td>
           <td><input type="range" id="self" min="10" max="100" step="1" v-model="attributes.self.base" v-on:change="attr_change($event)"></td>
-          <td>({{ attributes.self.base }}) {{ self }}</td>
+          <td>{{ attributes.self.base }}</td>
+          <td>{{ self }}</td>
         </tr>
         <tr>
           <td>Health</td>
+          <td><input type="checkbox" v-model="vitals.health.buffed" /></td>
+          <td><input type="checkbox" v-model="vitals.health.minor" /></td>
+          <td><input type="checkbox" v-model="vitals.health.major" /></td>
           <td></td>
           <td>{{ health }}</td>
+          <td>{{ health_realized }}</td>
         </tr>
         <tr>
           <td>Stamina</td>
+          <td><input type="checkbox" v-model="vitals.stamina.buffed" /></td>
+          <td><input type="checkbox" v-model="vitals.stamina.minor" /></td>
+          <td><input type="checkbox" v-model="vitals.stamina.major" /></td>
           <td></td>
           <td>{{ stamina }}</td>
+          <td>{{ stamina_realized }}</td>
         </tr>
         <tr>
           <td>Mana</td>
+          <td><input type="checkbox" v-model="vitals.mana.buffed" /></td>
+          <td><input type="checkbox" v-model="vitals.mana.minor" /></td>
+          <td><input type="checkbox" v-model="vitals.mana.major" /></td>
           <td></td>
           <td>{{ mana }}</td>
+          <td>{{ mana_realized }}</td>
         </tr>
       </tbody>
     </table>
