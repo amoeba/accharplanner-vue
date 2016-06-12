@@ -210,6 +210,7 @@ var vm = new Vue({
   data: {
     name: 'Kolthar',
     level: 275,
+    max: true, // All XP spent in stats/skills
     extra_skill_credits: {
       railrea: false,
       oswald: false,
@@ -217,12 +218,24 @@ var vm = new Vue({
       lum2: false
     },
     attributes: {
-      strength: 30,
-      endurance: 30,
-      coordination: 30,
-      quickness: 30,
-      focus: 30,
-      self: 30
+      strength: {
+        base: 30
+      },
+      endurance: {
+        base: 30
+      },
+      coordination: {
+        base: 30
+      },
+      quickness: {
+        base: 30
+      },
+      focus: {
+        base: 30
+      },
+      self: {
+        base: 30
+      }
     },
     skills: {
       alchemy: { 
@@ -570,22 +583,46 @@ var vm = new Vue({
     }
   },
   computed: {
+    strength: function() {
+      return int(this.attributes.strength.base) +
+        (this.max ? 190 : 0);
+    },
+    endurance: function() {
+      return int(this.attributes.endurance.base) +
+        (this.max ? 190 : 0);
+    },
+    coordination: function() {
+      return int(this.attributes.coordination.base) +
+        (this.max ? 190 : 0);
+    },
+    quickness: function() {
+      return int(this.attributes.quickness.base) +
+        (this.max ? 190 : 0);
+    },
+    focus: function() {
+      return int(this.attributes.focus.base) +
+        (this.max ? 190 : 0);
+    },
+    self: function() {
+      return int(this.attributes.self.base) +
+        (this.max ? 190 : 0);
+    },
     health: function () {
-      return int(this.attributes.endurance / 2);
+      return int(this.endurance / 2);
     },
     stamina: function () {
-      return int(this.attributes.endurance);
+      return int(this.endurance);
     },
     mana: function () {
-      return int(this.attributes.self);
+      return int(this.self);
     },
     attr_sum: function () {
-      return this.attributes.strength +
-          this.attributes.endurance +
-          this.attributes.coordination +
-          this.attributes.quickness +
-          this.attributes.focus +
-          this.attributes.self;
+      return this.attributes.strength.base +
+          this.attributes.endurance.base +
+          this.attributes.coordination.base +
+          this.attributes.quickness.base +
+          this.attributes.focus.base +
+          this.attributes.self.base;
     },
     used_skill_credits: function () {
       return 0 + _.reduce(_.map(_.filter(this.skills, function(s) { return s.training == "trained"; }), function(s) { return cost[s.key][s.training]; }), function(s,v) { return s + v; }, 0) + 
@@ -631,6 +668,15 @@ var vm = new Vue({
       for (var i = 0; i < keys.length; i++) {
         var key = keys[i];
         var skill_fn = skills[key];
+
+        var attr = {
+          strength: this.strength,
+          endurance: this.endurance,
+          coordination: this.coordination,
+          quickness: this.quickness,
+          focus: this.focus,
+          self: this.self
+        }
 
         this.skills[key].value = Math.round(skill_fn(attr)) + 
           bonus(this.skills[key].training) +
@@ -712,8 +758,8 @@ var vm = new Vue({
 });
 
 vm.$watch('attributes', function(oldval, newval) {
-  vm.update_skills(newval);
+  vm.update_skills();
 }, { deep: true });
 
 // Initialize skill values
-vm.update_skills(vm.$get('attributes'));
+vm.update_skills();

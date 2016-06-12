@@ -31,6 +31,7 @@
     <h3>Character</h3>
     <div>Name: {{ name }}</div>
     <div>Level: <input type="text" v-model="level" /></div>
+    <div>Max: <input type="checkbox" v-model="max" /></div>
     <div>
       Extra Skill Credits:
       <ul id="extra-skill-credits">
@@ -46,33 +47,33 @@
       <tbody>
         <tr>
           <td>Strength</td>
-          <td><input type="range" id="attributes.strength" min="30" max="100" step="1" v-model="attributes.strength"></td>
-          <td>{{ attributes.strength }}</td>
+          <td><input type="range" id="strength" min="30" max="100" step="1" v-model="attributes.strength.base"></td>
+          <td>({{ attributes.strength.base }}) {{ strength }}</td>
         </tr>
         <tr>
           <td>Endurance</td>
-          <td><input type="range" id="attributes.endurance" min="30" max="100" step="1" v-model="attributes.endurance"></td>
-          <td>{{ attributes.endurance }}</td>
+          <td><input type="range" id="endurance" min="30" max="100" step="1" v-model="attributes.endurance.base"></td>
+          <td>({{ attributes.endurance.base }}) {{ endurance }}</td>
         </tr>
         <tr>
           <td>Coordination</td>
-          <td><input type="range" id="attributes.coordination" min="30" max="100" step="1" v-model="attributes.coordination"></td>
-          <td>{{ attributes.coordination }}</td>
+          <td><input type="range" id="coordination" min="30" max="100" step="1" v-model="attributes.coordination.base"></td>
+          <td>({{ attributes.coordination.base }}) {{ coordination }}</td>
         </tr>
         <tr>
           <td>Quickness</td>
-          <td><input type="range" id="attributes.quickness" min="30" max="100" step="1" v-model="attributes.quickness"></td>
-          <td>{{ attributes.quickness }}</td>
+          <td><input type="range" id="quickness" min="30" max="100" step="1" v-model="attributes.quickness.base"></td>
+          <td>({{ attributes.quickness.base }}) {{ quickness }}</td>
         </tr>
         <tr>
           <td>Focus</td>
-          <td><input type="range" id="attributes.focus" min="30" max="100" step="1" v-model="attributes.focus"></td>
-          <td>{{ attributes.focus }}</td>
+          <td><input type="range" id="focus" min="30" max="100" step="1" v-model="attributes.focus.base"></td>
+          <td>({{ attributes.focus.base }}) {{ focus }}</td>
         </tr>
         <tr>
           <td>Self</td>
-          <td><input type="range" id="attributes.self" min="30" max="100" step="1" v-model="attributes.self"></td>
-          <td>{{ attributes.self }}</td>
+          <td><input type="range" id="self" min="30" max="100" step="1" v-model="attributes.self.base"></td>
+          <td>({{ attributes.self.base }}) {{ self }}</td>
         </tr>
         <tr>
           <td>Health</td>
