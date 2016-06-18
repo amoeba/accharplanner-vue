@@ -61,7 +61,7 @@ var cost = {
   heavy_weapons: { trained: 6, specialized: 6 },
   item_enchantment: { trained: 8, specialized: 8 },
   item_tinkering: { trained: 2, specialized: -1 },
-  jump: { trained: 0, specialized: -1 },
+  jump: { trained: 0, specialized: 4 },
   leadership: { trained: 4, specialized: 2 },
   life_magic: { trained: 12, specialized: 8 },
   light_weapons: { trained: 4, specialized: 4 },
