@@ -621,6 +621,13 @@ var vm = new Vue({
       } else if (training == 'trained') {
         this.skills[key].training = untrained_state[key];
       }
+    },
+    reset_skills: function(event) {
+      console.log("reset_skills()");
+
+      _.each(this.skills, function(s) {
+        s.training = untrained_state[s.key];
+      })
     }
   }
 });
