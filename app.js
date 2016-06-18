@@ -517,52 +517,48 @@ var vm = new Vue({
         (this.extra_skill_credits.lum2 ? 1 : 0);
     },
     specialized_skills: function () {
-      var sk = _.filter(this.skills, function(skill) {
-        return skill.training == "specialized";
-      });
+      var skills = _.filter(this.skills, function(skill) { return skill.training == "specialized"; });
 
-      for (var i = 0; i < sk.length; i++) {
-        sk[i].value = this[sk[i].key];
-        sk[i].enabled = false;
+      for (var i = 0; i < skills.length; i++) {
+        skills[i].value = this[skills[i].key];
+        skills[i].increase = "disabled"
+        skills[i].decrease = "enabled";
       }
 
-      return sk;
+      return skills;
     },
     trained_skills: function () {
-      var sk = _.filter(this.skills, function(skill) {
-        return skill.training == "trained";
-      });
+      var skills = _.filter(this.skills, function(skill) { return skill.training == "trained"; });
 
-      for (var i = 0; i < sk.length; i++) {
-        sk[i].value = this[sk[i].key];
-        sk[i].enabled = (cost[sk[i].key].specialized <= this.remaining_skill_credits) ? "enabled" : "disabled";
+      for (var i = 0; i < skills.length; i++) {
+        skills[i].value = this[skills[i].key];
+        skills[i].increase = (cost[skills[i].key].specialized <= this.remaining_skill_credits) ? "enabled" : "disabled";
+        skills[i].decrease = "enabled";
       }
 
-      return sk;
+      return skills;
     },
     untrained_skills: function () {
-      var sk = _.filter(this.skills, function(skill) {
-        return skill.training == "untrained";
-      });
+      var skills = _.filter(this.skills, function(skill) { return skill.training == "untrained"; });
 
-      for (var i = 0; i < sk.length; i++) {
-        sk[i].value = this[sk[i].key];
-        sk[i].enabled = (cost[sk[i].key].trained <= this.remaining_skill_credits) ? "enabled" : "disabled";
+      for (var i = 0; i < skills.length; i++) {
+        skills[i].value = this[skills[i].key];
+        skills[i].increase = (cost[skills[i].key].trained <= this.remaining_skill_credits) ? "enabled" : "disabled";
+        skills[i].decrease = "enabled";
       }
 
-      return sk;
+      return skills;
     },
     unusable_skills: function () {
-      var sk = _.filter(this.skills, function(skill) {
-        return skill.training == "unusable";
-      });
+      var skills = _.filter(this.skills, function(skill) { return skill.training == "unusable"; });
 
-      for (var i = 0; i < sk.length; i++) {
-        sk[i].value = this[sk[i].key];
-        sk[i].enabled = (cost[sk[i].key].trained <= this.remaining_skill_credits) ? "enabled" : "disabled";
+      for (var i = 0; i < skills.length; i++) {
+        skills[i].value = this[skills[i].key];
+        skills[i].increase = (cost[skills[i].key].trained <= this.remaining_skill_credits) ? "enabled" : "disabled";
+        skills[i].decrease = "disabled";
       }
 
-      return sk;
+      return skills;
     }
   },
   methods: {
