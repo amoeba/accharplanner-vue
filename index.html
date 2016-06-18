@@ -21,6 +21,14 @@
     display: inline;
   }
 
+  .enabled {
+    background-color: green;
+  }
+
+  .disabled {
+    background-color: red;
+  }
+
 </style>
 
 <div id="app">
@@ -116,7 +124,7 @@
       <li v-for="skill in specialized_skills">
         {{ skill.name }}
         {{ skill.value }}
-        <button v-on:click="training_increase" :skill="skill.key">+</button>
+        <button v-on:click="training_increase" :skill="skill.key" class="disabled">+</button>
         <button v-on:click="training_decrease" :skill="skill.key">-</button>
       </li>
     </ul>
@@ -126,8 +134,8 @@
       <li v-for="skill in trained_skills">
         {{ skill.name }}
         {{ skill.value }}
-        <button v-on:click="training_increase" :skill="skill.key">+</button>
-        <button v-on:click="training_decrease" :skill="skill.key">-</button>
+        <button v-on:click="training_increase" :skill="skill.key" :class="skill.enabled">+</button>
+        <button v-on:click="training_decrease" :skill="skill.key" class="enabled">-</button>
       </li>
     </ul>
 
@@ -136,8 +144,8 @@
       <li v-for="skill in untrained_skills">
         {{ skill.name }}
         {{ skill.value }}
-        <button v-on:click="training_increase" :skill="skill.key">+</button>
-        <button v-on:click="training_decrease" :skill="skill.key">-</button>
+        <button v-on:click="training_increase" :skill="skill.key" :class="skill.enabled">+</button>
+        <button v-on:click="training_decrease" :skill="skill.key" class="disabled">-</button>
       </li>
     </ul>
 
@@ -146,8 +154,8 @@
       <li v-for="skill in unusable_skills">
         {{ skill.name }}
         {{ skill.value }}
-        <button v-on:click="training_increase" :skill="skill.key">+</button>
-        <button v-on:click="training_decrease" :skill="skill.key">-</button>
+        <button v-on:click="training_increase" :skill="skill.key" :class="skill.enabled">+</button>
+        <button v-on:click="training_decrease" :skill="skill.key" class="disabled">-</button>
       </li>
     </ul>
 </div>

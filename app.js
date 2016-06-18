@@ -523,6 +523,7 @@ var vm = new Vue({
 
       for (var i = 0; i < sk.length; i++) {
         sk[i].value = this[sk[i].key];
+        sk[i].enabled = false;
       }
 
       return sk;
@@ -534,6 +535,7 @@ var vm = new Vue({
 
       for (var i = 0; i < sk.length; i++) {
         sk[i].value = this[sk[i].key];
+        sk[i].enabled = (cost[sk[i].key].specialized <= this.remaining_skill_credits) ? "enabled" : "disabled";
       }
 
       return sk;
@@ -545,6 +547,7 @@ var vm = new Vue({
 
       for (var i = 0; i < sk.length; i++) {
         sk[i].value = this[sk[i].key];
+        sk[i].enabled = (cost[sk[i].key].trained <= this.remaining_skill_credits) ? "enabled" : "disabled";
       }
 
       return sk;
@@ -556,6 +559,7 @@ var vm = new Vue({
 
       for (var i = 0; i < sk.length; i++) {
         sk[i].value = this[sk[i].key];
+        sk[i].enabled = (cost[sk[i].key].trained <= this.remaining_skill_credits) ? "enabled" : "disabled";
       }
 
       return sk;
