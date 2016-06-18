@@ -1,6 +1,7 @@
 var attr_max = 330,
     level_min = 5,
-    level_max = 275;
+    level_max = 275,
+    max_spec = 70;
 
 var int = parseInt;
 var skills = {
@@ -206,15 +207,15 @@ var vm = new Vue({
     attributes: {
       strength: {
         key: 'strength',
-        base: 100
+        base: 10
       },
       endurance: {
         key: 'endurance',
-        base: 100
+        base: 10
       },
       coordination: {
         key: 'coordination',
-        base: 100
+        base: 10
       },
       quickness: {
         key: 'quickness',
@@ -263,7 +264,7 @@ var vm = new Vue({
 	    creature_enchantment: {
         key: 'creature_enchantment',
         name: 'Creature Enchantment',
-        training: 'unusable'
+        training: 'specialized' // default: unusable
       },
 	    deception: {
         key: 'deception',
@@ -303,7 +304,7 @@ var vm = new Vue({
 	    item_enchantment: {
         key: 'item_enchantment',
         name: 'Item Enchantment',
-        training: 'unusable'
+        training: 'specialized' // default: unusable
       },
 	    item_tinkering: {
         key: 'item_tinkering',
@@ -323,7 +324,7 @@ var vm = new Vue({
 	    life_magic: {
         key: 'life_magic',
         name: 'Life Magic',
-        training: 'unusable'
+        training: 'specialized' // default: unusable
       },
 	    light_weapons: {
         key: 'light_weapons',
@@ -358,7 +359,7 @@ var vm = new Vue({
 	    melee_defense: {
         key: 'melee_defense',
         name: 'Melee Defense',
-        training: 'untrained'
+        training: 'specialized' // default: untrained
       },
 	    missile_defense: {
         key: 'missile_defense',
@@ -368,7 +369,7 @@ var vm = new Vue({
 	    missile_weapons: {
         key: 'missile_weapons',
         name: 'Missile Weapons',
-        training: 'untrained'
+        training: 'specialized' // default: untrained
       },
 	    recklessness: {
         key: 'recklessness',
@@ -398,7 +399,7 @@ var vm = new Vue({
 	    summoning: {
         key: 'summoning',
         name: 'Summoning',
-        training: 'untrained'
+        training: 'specialized' // default: untrained
       },
 	    two_handed_combat: {
         key: 'two_handed_combat',
@@ -408,12 +409,12 @@ var vm = new Vue({
 	    void_magic: {
         key: 'void_magic',
         name: 'Void Magic',
-        training: 'unusable'
+        training: 'specialized' // default: unusable
       },
 	    war_magic: {
         key: 'war_magic',
         name: 'War Magic',
-        training: 'unusable'
+        training: 'specialized' // default: unusable
       },
 	    weapon_tinkering: {
         key: 'weapon_tinkering',
