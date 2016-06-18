@@ -502,14 +502,18 @@ var vm = new Vue({
     void_magic:           function(a) { return int((int(this.focus) + int(this.self)) / 4); },
     war_magic:            function(a) { return int((int(this.focus) + int(this.self)) / 4); },
     weapon_tinkering:     function(a) { return int((int(this.strength) + int(this.focus)) / 2); },
-    used_skill_credits: function () {
+
+    skill_credits_spent: function () {
       return 0 + _.reduce(_.map(_.filter(this.skills, function(s) { return s.training == "trained"; }), function(s) { return cost[s.key][s.training]; }), function(s,v) { return s + v; }, 0) +
              _.reduce(_.map(_.filter(this.skills, function(s) { return s.training == "specialized"; }), function(s) { return cost[s.key][s.training]; }), function(s,v) { return s + v; }, 0);
     },
-    remaining_skill_credits: function() {
-      return this.total_skill_credits - this.used_skill_credits;
+    skill_credits_spent_specialized: function() {
+      return 0 + _.reduce(_.map(_.filter(this.skills, function(s) { return s.training == "specialized"}), function(s) { return cost[s.key].specialized; }), function(s,v) { return s + v; }, 0);
     },
-    total_skill_credits: function () {
+    skill_credits_available: function() {
+      return this.skill_credits_total - this.skill_credits_spent;
+    },
+    skill_credits_total: function () {
       return 52 + skill_credits(this.level) +
         (this.extra_skill_credits.oswald ? 1 : 0) +
         (this.extra_skill_credits.railrea ? 1 : 0) +
@@ -532,7 +536,7 @@ var vm = new Vue({
 
       for (var i = 0; i < skills.length; i++) {
         skills[i].value = this[skills[i].key];
-        skills[i].increase = (cost[skills[i].key].specialized <= this.remaining_skill_credits) ? "enabled" : "disabled";
+        skills[i].increase = (cost[skills[i].key].specialized <= this.skill_credits_available) ? "enabled" : "disabled";
         skills[i].decrease = "enabled";
       }
 
@@ -543,7 +547,7 @@ var vm = new Vue({
 
       for (var i = 0; i < skills.length; i++) {
         skills[i].value = this[skills[i].key];
-        skills[i].increase = (cost[skills[i].key].trained <= this.remaining_skill_credits) ? "enabled" : "disabled";
+        skills[i].increase = (cost[skills[i].key].trained <= this.skill_credits_available) ? "enabled" : "disabled";
         skills[i].decrease = "enabled";
       }
 
@@ -554,7 +558,7 @@ var vm = new Vue({
 
       for (var i = 0; i < skills.length; i++) {
         skills[i].value = this[skills[i].key];
-        skills[i].increase = (cost[skills[i].key].trained <= this.remaining_skill_credits) ? "enabled" : "disabled";
+        skills[i].increase = (cost[skills[i].key].trained <= this.skill_credits_available) ? "enabled" : "disabled";
         skills[i].decrease = "disabled";
       }
 
@@ -593,16 +597,18 @@ var vm = new Vue({
       var training = this.skills[key].training;
 
       if (training == 'untrained' || training == 'unusable') {
-        if (this.remaining_skill_credits >= cost[key].trained) {
+        if (this.skill_credits_available >= cost[key].trained) {
           this.skills[key].training = 'trained';
         } else {
           console.log("Not enough available skill credits.");
         }
       } else if (training == 'trained') {
-        if (this.remaining_skill_credits >= cost[key].specialized) {
-          this.skills[key].training = 'specialized';
-        } else {
+        if (this.skill_credits_available < cost[key].specialized) {
           console.log("Not enough available skill credits.");
+        } else if ((this.skill_credits_spent_specialized + cost[key].specialized) > max_spec) {
+          console.log("You cannot specialize more than " + max_spec + " credits worth of skills.");
+        } else {
+          this.skills[key].training = 'specialized';
         }
       }
     },
