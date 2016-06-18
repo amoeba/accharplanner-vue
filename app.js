@@ -575,11 +575,11 @@ var vm = new Vue({
       var extra = this.attr_sum - attr_max;
 
       while (extra > 0) {
-        for (j = 0; j < vals.length; j++) {
+        _.each(vals, function(v) {
           if (vals[j] <= 10) continue;
           --vals[j];
           extra -= 1;
-        }
+        })
       }
 
       for (var k = 0; k < to_dampen.length; k++) {
