@@ -528,6 +528,7 @@ var vm = new Vue({
         skills[i].value = this[skills[i].key];
         skills[i].increase = "disabled"
         skills[i].decrease = "enabled";
+        skills[i].cost_down = cost[skills[i].key].trained;
       }
 
       return skills;
@@ -539,6 +540,8 @@ var vm = new Vue({
         skills[i].value = this[skills[i].key];
         skills[i].increase = (cost[skills[i].key].specialized <= this.skill_credits_available) ? "enabled" : "disabled";
         skills[i].decrease = "enabled";
+        skills[i].cost_up = cost[skills[i].key].specialized;
+        skills[i].cost_down = cost[skills[i].key].trained;
       }
 
       return skills;
@@ -550,6 +553,7 @@ var vm = new Vue({
         skills[i].value = this[skills[i].key];
         skills[i].increase = (cost[skills[i].key].trained <= this.skill_credits_available) ? "enabled" : "disabled";
         skills[i].decrease = "enabled";
+        skills[i].cost_up = cost[skills[i].key].trained;
       }
 
       return skills;
@@ -561,6 +565,7 @@ var vm = new Vue({
         skills[i].value = this[skills[i].key];
         skills[i].increase = (cost[skills[i].key].trained <= this.skill_credits_available) ? "enabled" : "disabled";
         skills[i].decrease = "disabled";
+        skills[i].cost_up = cost[skills[i].key].trained;
       }
 
       return skills;
