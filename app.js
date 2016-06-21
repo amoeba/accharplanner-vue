@@ -44,6 +44,22 @@ var skills = {
   war_magic:            function(a) { return (int(a.focus) + int(a.self)) / 4; },
   weapon_tinkering:     function(a) { return (int(a.strength) + int(a.focus)) / 2; }
 }
+var bonus = function(training) {
+  var bonus = 0;
+
+  if (training == "trained") {
+    bonus = 5;
+  } else if (training == "specialized") {
+    bonus = 10;
+  }
+
+  return(bonus);
+}
+
+
+var skillfn = function(attributes, training, fn) {
+  return int(fn(attributes)) + bonus(training);
+}
 
 var cost = {
   alchemy: { trained: 6, specialized: 6 },
@@ -196,8 +212,8 @@ var vm = new Vue({
   el: '#app',
   data: {
     name: 'Kolthar',
-    level: 275,
-    max: true, // All XP spent in stats/skills
+    level: 1,
+    max: false, // All XP spent in stats/skills
     extra_skill_credits: {
       railrea: false,
       oswald: false,
@@ -264,7 +280,7 @@ var vm = new Vue({
 	    creature_enchantment: {
         key: 'creature_enchantment',
         name: 'Creature Enchantment',
-        training: 'specialized' // default: unusable
+        training: 'unusable' // default: unusable
       },
 	    deception: {
         key: 'deception',
@@ -304,7 +320,7 @@ var vm = new Vue({
 	    item_enchantment: {
         key: 'item_enchantment',
         name: 'Item Enchantment',
-        training: 'specialized' // default: unusable
+        training: 'unusable' // default: unusable
       },
 	    item_tinkering: {
         key: 'item_tinkering',
@@ -324,7 +340,7 @@ var vm = new Vue({
 	    life_magic: {
         key: 'life_magic',
         name: 'Life Magic',
-        training: 'specialized' // default: unusable
+        training: 'unusable' // default: unusable
       },
 	    light_weapons: {
         key: 'light_weapons',
@@ -359,7 +375,7 @@ var vm = new Vue({
 	    melee_defense: {
         key: 'melee_defense',
         name: 'Melee Defense',
-        training: 'specialized' // default: untrained
+        training: 'untrained' // default: untrained
       },
 	    missile_defense: {
         key: 'missile_defense',
@@ -369,7 +385,7 @@ var vm = new Vue({
 	    missile_weapons: {
         key: 'missile_weapons',
         name: 'Missile Weapons',
-        training: 'specialized' // default: untrained
+        training: 'untrained' // default: untrained
       },
 	    recklessness: {
         key: 'recklessness',
@@ -399,7 +415,7 @@ var vm = new Vue({
 	    summoning: {
         key: 'summoning',
         name: 'Summoning',
-        training: 'specialized' // default: untrained
+        training: 'untrained' // default: untrained
       },
 	    two_handed_combat: {
         key: 'two_handed_combat',
@@ -409,12 +425,12 @@ var vm = new Vue({
 	    void_magic: {
         key: 'void_magic',
         name: 'Void Magic',
-        training: 'specialized' // default: unusable
+        training: 'unusable' // default: unusable
       },
 	    war_magic: {
         key: 'war_magic',
         name: 'War Magic',
-        training: 'specialized' // default: unusable
+        training: 'unusable' // default: unusable
       },
 	    weapon_tinkering: {
         key: 'weapon_tinkering',
@@ -465,44 +481,44 @@ var vm = new Vue({
           int(this.attributes.focus.base) +
           int(this.attributes.self.base);
     },
-    alchemy:              function(a) { return int((int(this.coordination) + int(this.focus)) / 3); },
-    arcane_lore:          function(a) { return int(int(this.focus) / 3); },
-    armor_tinkering:      function(a) { return int((int(this.endurance) + int(this.focus)) / 2); },
-    assess_creature:      function(a) { return int(0); },
-    assess_person:        function(a) { return int(0); },
-    cooking:              function(a) { return int((int(this.coordination) + int(this.focus)) / 3); },
-    creature_enchantment: function(a) { return int((int(this.focus) + int(this.self)) / 4); },
-    deception:            function(a) { return int(0); },
-    dual_wield:           function(a) { return int((int(this.strength) + int(this.coordination)) / 3); },
-    dirty_fighting:       function(a) { return int((int(this.strength) + int(this.coordination)) / 3); },
-    finesse_weapons:      function(a) { return int((int(this.coordination) + int(this.quickness)) / 3); },
-    fletching:            function(a) { return int((int(this.coordination) + int(this.focus)) / 3); },
-    healing:              function(a) { return int((int(this.focus) + int(this.coordination)) / 3); },
-    heavy_weapons:        function(a) { return int((int(this.strength) + int(this.coordination)) / 3); },
-    item_enchantment:     function(a) { return int((int(this.focus) + int(this.self)) / 4); },
-    item_tinkering:       function(a) { return int((int(this.focus) + int(this.coordination)) / 2); },
-    jump:                 function(a) { return int((int(this.strength) + int(this.coordination)) / 2); },
-    leadership:           function(a) { return int(0); },
-    life_magic:           function(a) { return int((int(this.focus) + int(this.self)) / 4); },
-    light_weapons:        function(a) { return int((int(this.strength) + int(this.coordination)) / 3); },
-    lockpick:             function(a) { return int((int(this.coordination) + int(this.focus)) / 3); },
-    loyalty:              function(a) { return int(0); },
-    magic_defense:        function(a) { return int((int(this.focus) + int(this.self)) / 7); },
-    magic_item_tinkering: function(a) { return int(int(this.focus)); },
-    mana_conversion:      function(a) { return int((int(this.focus) + int(this.self)) / 6); },
-    melee_defense:        function(a) { return int((int(this.coordination) + int(this.quickness)) / 3); },
-    missile_defense:      function(a) { return int((int(this.coordination) + int(this.quickness)) / 5); },
-    missile_weapons:      function(a) { return int(int(this.coordination) / 2); },
-    recklessness:         function(a) { return int((int(this.strength) + int(this.quickness)) / 3); },
-    run:                  function(a) { return int(int(this.quickness)); },
-    salvaging:            function(a) { return int(0); },
-    shield:               function(a) { return int((int(this.strength) + int(this.coordination)) / 2); },
-    sneak_attack:         function(a) { return int((int(this.coordination) + int(this.quickness)) / 3); },
-    summoning:            function(a) { return int((int(this.endurance) + int(this.self)) / 3); },
-    two_handed_combat:    function(a) { return int((int(this.strength) + int(this.coordination)) / 3); },
-    void_magic:           function(a) { return int((int(this.focus) + int(this.self)) / 4); },
-    war_magic:            function(a) { return int((int(this.focus) + int(this.self)) / 4); },
-    weapon_tinkering:     function(a) { return int((int(this.strength) + int(this.focus)) / 2); },
+    alchemy:              function() { return skillfn(this.attributes, this.skills.alchemy.training, function(a) { return (int(a.coordination.base) + int(a.focus.base)) / 3; }); },
+    arcane_lore:          function() { return int(int(this.focus) / 3) },
+    armor_tinkering:      function() { return int((int(this.endurance) + int(this.focus)) / 2); },
+    assess_creature:      function() { return int(0); },
+    assess_person:        function() { return int(0); },
+    cooking:              function() { return int((int(this.coordination) + int(this.focus)) / 3); },
+    creature_enchantment: function() { return int((int(this.focus) + int(this.self)) / 4); },
+    deception:            function() { return int(0); },
+    dual_wield:           function() { return int((int(this.strength) + int(this.coordination)) / 3); },
+    dirty_fighting:       function() { return int((int(this.strength) + int(this.coordination)) / 3); },
+    finesse_weapons:      function() { return int((int(this.coordination) + int(this.quickness)) / 3); },
+    fletching:            function() { return int((int(this.coordination) + int(this.focus)) / 3); },
+    healing:              function() { return int((int(this.focus) + int(this.coordination)) / 3); },
+    heavy_weapons:        function() { return int((int(this.strength) + int(this.coordination)) / 3); },
+    item_enchantment:     function() { return int((int(this.focus) + int(this.self)) / 4); },
+    item_tinkering:       function() { return int((int(this.focus) + int(this.coordination)) / 2); },
+    jump:                 function() { return int((int(this.strength) + int(this.coordination)) / 2); },
+    leadership:           function() { return int(0); },
+    life_magic:           function() { return int((int(this.focus) + int(this.self)) / 4); },
+    light_weapons:        function() { return int((int(this.strength) + int(this.coordination)) / 3); },
+    lockpick:             function() { return int((int(this.coordination) + int(this.focus)) / 3); },
+    loyalty:              function() { return int(0); },
+    magic_defense:        function() { return int((int(this.focus) + int(this.self)) / 7); },
+    magic_item_tinkering: function() { return int(int(this.focus)); },
+    mana_conversion:      function() { return int((int(this.focus) + int(this.self)) / 6); },
+    melee_defense:        function() { return int((int(this.coordination) + int(this.quickness)) / 3); },
+    missile_defense:      function() { return int((int(this.coordination) + int(this.quickness)) / 5); },
+    missile_weapons:      function() { return int(int(this.coordination) / 2); },
+    recklessness:         function() { return int((int(this.strength) + int(this.quickness)) / 3); },
+    run:                  function() { return int(int(this.quickness)); },
+    salvaging:            function() { return int(0); },
+    shield:               function() { return int((int(this.strength) + int(this.coordination)) / 2); },
+    sneak_attack:         function() { return int((int(this.coordination) + int(this.quickness)) / 3); },
+    summoning:            function() { return int((int(this.endurance) + int(this.self)) / 3); },
+    two_handed_combat:    function() { return int((int(this.strength) + int(this.coordination)) / 3); },
+    void_magic:           function() { return int((int(this.focus) + int(this.self)) / 4); },
+    war_magic:            function() { return int((int(this.focus) + int(this.self)) / 4); },
+    weapon_tinkering:     function() { return int((int(this.strength) + int(this.focus)) / 2); },
 
     skill_credits_spent: function () {
       return 0 + _.reduce(_.map(_.filter(this.skills, function(s) { return s.training == "trained"; }), function(s) { return cost[s.key][s.training]; }), function(s,v) { return s + v; }, 0) +
@@ -528,7 +544,7 @@ var vm = new Vue({
         skills[i].value = this[skills[i].key];
         skills[i].increase = "disabled"
         skills[i].decrease = "enabled";
-        skills[i].cost_down = cost[skills[i].key].trained;
+        skills[i].cost_down = cost[skills[i].key].specialized;
       }
 
       return skills;
