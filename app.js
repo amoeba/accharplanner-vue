@@ -3,7 +3,7 @@ var attr_max = 330,
     level_max = 275,
     max_spec = 70;
 
-var int = parseInt;
+var int = Math.round;
 var skills = {
   alchemy:              function(a) { return (int(a.coordination.base) + int(a.focus.base)) / 3; },
   arcane_lore:          function(a) { return int(a.focus.base) / 3; },
