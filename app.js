@@ -376,7 +376,7 @@ var vm = new Vue({
       },
 	    mana_conversion: {
         key: 'mana_conversion',
-        name: 'Alchemy',
+        name: 'Mana Conversion',
         training: 'unusable'
       },
 	    melee_defense: {
