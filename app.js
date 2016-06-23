@@ -56,6 +56,13 @@ var bonus = function(training) {
   return(bonus);
 }
 
+var can_spec = function(skill) {
+    return cost[skill].specialized > 0;
+}
+
+var can_untrain = function(skill) {
+  return cost[skill].trained > 0;
+}
 
 var skillfn = function(skill, character, fn) {
   return int(fn(character.attributes)) + bonus(character.skills[skill].training);
@@ -554,8 +561,8 @@ var vm = new Vue({
 
       for (var i = 0; i < skills.length; i++) {
         skills[i].value = this[skills[i].key];
-        skills[i].increase = (cost[skills[i].key].specialized <= this.skill_credits_available) ? "enabled" : "disabled";
-        skills[i].decrease = "enabled";
+        skills[i].increase = can_spec(skills[i].key) ? ((cost[skills[i].key].specialized <= this.skill_credits_available) ? "enabled" : "disabled") : "disabled"
+        skills[i].decrease = can_untrain(skills[i].key) ? "enabled" : "disabled";
         skills[i].cost_up = cost[skills[i].key].specialized;
         skills[i].cost_down = cost[skills[i].key].trained;
       }
