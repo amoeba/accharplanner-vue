@@ -619,10 +619,16 @@ var vm = new Vue({
         this.attributes[to_dampen[k].key].base = vals[k];
       }
     },
-    training_increase: function(event) {
+    reset_skills: function(event) {
+      console.log("reset_skills()");
+
+      _.each(this.skills, function(s) {
+        s.training = untrained_state[s.key];
+      })
+    },
+    training_increase: function(key) {
       console.log('training_increase()');
 
-      var key = event.target.attributes[0].value;
       var training = this.skills[key].training;
 
       if (training == 'untrained' || training == 'unusable') {
@@ -641,10 +647,9 @@ var vm = new Vue({
         }
       }
     },
-    training_decrease: function(event) {
+    training_decrease: function(key) {
       console.log('training_decrease()');
 
-      var key = event.target.attributes[0].value;
       var training = this.skills[key].training;
 
       if (training == 'specialized') {
@@ -652,13 +657,23 @@ var vm = new Vue({
       } else if (training == 'trained') {
         this.skills[key].training = untrained_state[key];
       }
-    },
-    reset_skills: function(event) {
-      console.log("reset_skills()");
-
-      _.each(this.skills, function(s) {
-        s.training = untrained_state[s.key];
-      })
+    }
+  },
+  components: {
+    skill: {
+      template: "#skill_row_plan",
+      props: [ "skill",
+        "increase",
+        "decrease"],
+      replace: false,
+      methods: {
+        inc: function() {
+          this.$parent.training_increase(this.skill.key);
+        },
+        dec: function() {
+          this.$parent.training_decrease(this.skill.key);
+        }
+      }
     }
   }
 });

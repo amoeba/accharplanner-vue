@@ -159,9 +159,18 @@
     <div class="box">
       Skills <button id="reset-skills" v-on:click="reset_skills">Reset skills</button></br />
 
-      Specialized
+      <table>
+        <tr><td colspan="6">Specialized</td></tr>
+        <tr v-for="skill in specialized_skills" is="skill" :skill="skill" :increase="training_increase" :decrease="training_decrease"></tr>
+        <tr><td colspan="6">Trained</td></tr>
+        <tr v-for="skill in trained_skills" is="skill" :skill="skill"></tr>
+        <tr><td colspan="6">Untrained</td></tr>
+        <tr v-for="skill in untrained_skills" is="skill" :skill="skill"></tr>
+        <tr><td colspan="6">Unusable</td></tr>
+        <tr v-for="skill in unusable_skills" is="skill" :skill="skill"></tr>
+      </table>
 
-      <ul>
+      <!-- <ul>
         <li v-for="skill in specialized_skills">
           <span class="skill_name">{{ skill.name }}</span>
           <span class="skill_value">{{ skill.value }}</span>
@@ -210,9 +219,22 @@
           <span class="skill_cost"></span>
 
         </li>
-      </ul>
+      </ul> -->
   </div>
 </div>
+
+<template id="skill_row_plan">
+  <tr>
+    <td class="skill_name">{{ skill.name }}</td>
+    <td class="skill_value">{{ skill.value }}</td>
+    <td class="skill_cost">{{ skill.cost_up }}</td>
+    <td class="skill_button"><button v-on:click="inc" :skill="skill.key" :class="skill.increase">+</button></td>
+    <td class="skill_button"><button v-on:click="dec" :skill="skill.key" :class="skill.decrease">-</button></td>
+    <td class="skill_cost">{{ skill.cost_down }}</td>
+  </tr>
+</template>
+
+
 
 <script src="underscore.js"></script>
 <script src="https://cdn.jsdelivr.net/vue/latest/vue.js"></script>
