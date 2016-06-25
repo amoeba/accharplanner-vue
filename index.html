@@ -66,160 +66,109 @@
 </style>
 
 <div id="app">
-    <h3>Debug</h3>
-    <div>Attr sum: {{attr_sum}}</div>
-    <div>Spec total: {{ skill_credits_spent_specialized }}</div>
+  <h3>Debug</h3>
+  <div>Attr sum: {{attr_sum}}</div>
+  <div>Spec total: {{ skill_credits_spent_specialized }}</div>
 
-    <h3>Character</h3>
-    <div>Name: {{ name }}</div>
-    <div>Level: <input type="text" v-model="level" /></div>
-    <div>Skill credits: {{ skill_credits_spent }} / {{ skill_credits_total }}</div>
-    <div>Max: <input type="checkbox" v-model="max" /></div>
-    <div>
-      Extra Skill Credits:
-      <ul id="extra-skill-credits">
-        <li><label for="skill_oswald">Oswald: </label><input id="skill_oswald" type="checkbox" v-model="extra_skill_credits.oswald" /></li>
-        <li><label for="skill_railrea">Railrea: </label><input id="skill_railrea" type="checkbox" v-model="extra_skill_credits.railrea" /></li>
-        <li><label for="skill_lum1">Luminance (1): </label><input id="skill_lum1" type="checkbox" v-model="extra_skill_credits.lum1" /></li>
-        <li><label for="skill_lum2">Luminance (2): </label><input id="skill_lum2" type="checkbox" v-model="extra_skill_credits.lum2" /></li>
-      </ul>
-    </div>
+  <h3>Character</h3>
+  <div>Name: {{ name }}</div>
+  <div>Level: <input type="text" v-model="level" /></div>
+  <div>Skill credits: {{ skill_credits_spent }} / {{ skill_credits_total }}</div>
+  <div>Max: <input type="checkbox" v-model="max" /></div>
+  <div>
+    Extra Skill Credits:
+    <ul id="extra-skill-credits">
+      <li><label for="skill_oswald">Oswald: </label><input id="skill_oswald" type="checkbox" v-model="extra_skill_credits.oswald" /></li>
+      <li><label for="skill_railrea">Railrea: </label><input id="skill_railrea" type="checkbox" v-model="extra_skill_credits.railrea" /></li>
+      <li><label for="skill_lum1">Luminance (1): </label><input id="skill_lum1" type="checkbox" v-model="extra_skill_credits.lum1" /></li>
+      <li><label for="skill_lum2">Luminance (2): </label><input id="skill_lum2" type="checkbox" v-model="extra_skill_credits.lum2" /></li>
+    </ul>
+  </div>
 
-    <div class="box">
-      Attributes
+  <div class="box">
+    Attributes
 
-      <table>
-        <thead>
-          <tr>
-            <th>Attribute</th>
-            <th></th>
-            <th>Base</th>
-            <th>Actual</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td>Strength</td>
-            <td><input type="range" id="strength" min="10" max="100" step="1" v-model="attributes.strength.base" v-on:change="attr_change($event)"></td>
-            <td>{{ attributes.strength.base }}</td>
-            <td>{{ strength }}</td>
-          </tr>
-          <tr>
-            <td>Endurance</td>
-            <td><input type="range" id="endurance" min="10" max="100" step="1" v-model="attributes.endurance.base" v-on:change="attr_change($event)"></td>
-            <td>{{ attributes.endurance.base }}</td>
-            <td>{{ endurance }}</td>
-          </tr>
-          <tr>
-            <td>Coordination</td>
-            <td><input type="range" id="coordination" min="10" max="100" step="1" v-model="attributes.coordination.base" v-on:change="attr_change($event)"></td>
-            <td>{{ attributes.coordination.base }}</td>
-            <td>{{ coordination }}</td>
-          </tr>
-          <tr>
-            <td>Quickness</td>
-            <td><input type="range" id="quickness" min="10" max="100" step="1" v-model="attributes.quickness.base" v-on:change="attr_change($event)"></td>
-            <td>{{ attributes.quickness.base }}</td>
-            <td>{{ quickness }}</td>
-          </tr>
-          <tr>
-            <td>Focus</td>
-            <td><input type="range" id="focus" min="10" max="100" step="1" v-model="attributes.focus.base" v-on:change="attr_change($event)"></td>
-            <td>{{ attributes.focus.base }}</td>
-            <td>{{ focus }}</td>
-          </tr>
-          <tr>
-            <td>Self</td>
-            <td><input type="range" id="self" min="10" max="100" step="1" v-model="attributes.self.base" v-on:change="attr_change($event)"></td>
-            <td>{{ attributes.self.base }}</td>
-            <td>{{ self }}</td>
-          </tr>
-          <tr>
-            <td>Health</td>
-            <td></td>
-            <td></td>
-            <td>{{ health }}</td>
-          </tr>
-          <tr>
-            <td>Stamina</td>
-            <td></td>
-            <td></td>
-            <td>{{ stamina }}</td>
-          </tr>
-          <tr>
-            <td>Mana</td>
-            <td></td>
-            <td></td>
-            <td>{{ mana }}</td>
-          </tr>
-        </tbody>
-      </table>
-    </div>
+    <table>
+      <thead>
+        <tr>
+          <th>Attribute</th>
+          <th></th>
+          <th>Base</th>
+          <th>Actual</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Strength</td>
+          <td><input type="range" id="strength" min="10" max="100" step="1" v-model="attributes.strength.base" v-on:change="attr_change($event)"></td>
+          <td>{{ attributes.strength.base }}</td>
+          <td>{{ strength }}</td>
+        </tr>
+        <tr>
+          <td>Endurance</td>
+          <td><input type="range" id="endurance" min="10" max="100" step="1" v-model="attributes.endurance.base" v-on:change="attr_change($event)"></td>
+          <td>{{ attributes.endurance.base }}</td>
+          <td>{{ endurance }}</td>
+        </tr>
+        <tr>
+          <td>Coordination</td>
+          <td><input type="range" id="coordination" min="10" max="100" step="1" v-model="attributes.coordination.base" v-on:change="attr_change($event)"></td>
+          <td>{{ attributes.coordination.base }}</td>
+          <td>{{ coordination }}</td>
+        </tr>
+        <tr>
+          <td>Quickness</td>
+          <td><input type="range" id="quickness" min="10" max="100" step="1" v-model="attributes.quickness.base" v-on:change="attr_change($event)"></td>
+          <td>{{ attributes.quickness.base }}</td>
+          <td>{{ quickness }}</td>
+        </tr>
+        <tr>
+          <td>Focus</td>
+          <td><input type="range" id="focus" min="10" max="100" step="1" v-model="attributes.focus.base" v-on:change="attr_change($event)"></td>
+          <td>{{ attributes.focus.base }}</td>
+          <td>{{ focus }}</td>
+        </tr>
+        <tr>
+          <td>Self</td>
+          <td><input type="range" id="self" min="10" max="100" step="1" v-model="attributes.self.base" v-on:change="attr_change($event)"></td>
+          <td>{{ attributes.self.base }}</td>
+          <td>{{ self }}</td>
+        </tr>
+        <tr>
+          <td>Health</td>
+          <td></td>
+          <td></td>
+          <td>{{ health }}</td>
+        </tr>
+        <tr>
+          <td>Stamina</td>
+          <td></td>
+          <td></td>
+          <td>{{ stamina }}</td>
+        </tr>
+        <tr>
+          <td>Mana</td>
+          <td></td>
+          <td></td>
+          <td>{{ mana }}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
 
-    <div class="box">
-      Skills <button id="reset-skills" v-on:click="reset_skills">Reset skills</button></br />
+  <div class="box">
+    Skills <button id="reset-skills" v-on:click="reset_skills">Reset skills</button></br />
 
-      <table>
-        <tr><td colspan="6">Specialized</td></tr>
-        <tr v-for="skill in specialized_skills" is="skill" :skill="skill" :increase="training_increase" :decrease="training_decrease"></tr>
-        <tr><td colspan="6">Trained</td></tr>
-        <tr v-for="skill in trained_skills" is="skill" :skill="skill"></tr>
-        <tr><td colspan="6">Untrained</td></tr>
-        <tr v-for="skill in untrained_skills" is="skill" :skill="skill"></tr>
-        <tr><td colspan="6">Unusable</td></tr>
-        <tr v-for="skill in unusable_skills" is="skill" :skill="skill"></tr>
-      </table>
-
-      <!-- <ul>
-        <li v-for="skill in specialized_skills">
-          <span class="skill_name">{{ skill.name }}</span>
-          <span class="skill_value">{{ skill.value }}</span>
-          <span class="skill_cost"></span>
-          <span class="skill_button"><button v-on:click="training_increase" :skill="skill.key" :class="skill.increase">+</button></span>
-          <span class="skill_button"><button v-on:click="training_decrease" :skill="skill.key" :class="skill.decrease">-</button></span>
-          <span class="skill_cost">{{ skill.cost_down }}</span>
-        </li>
-      </ul>
-
-      Trained
-
-      <ul>
-        <li v-for="skill in trained_skills">
-          <span class="skill_name">{{ skill.name }}</span>
-          <span class="skill_value">{{ skill.value }}</span>
-          <span class="skill_cost">{{ skill.cost_up}}</span>
-          <span class="skill_button"><button v-on:click="training_increase" :skill="skill.key" :class="skill.increase">+</button></span>
-          <span class="skill_button"><button v-on:click="training_decrease" :skill="skill.key" :class="skill.decrease">-</button></span>
-          <span class="skill_cost">{{ skill.cost_down }}</span>
-        </li>
-      </ul>
-
-      Untrained
-
-      <ul>
-        <li v-for="skill in untrained_skills">
-          <span class="skill_name">{{ skill.name }}</span>
-          <span class="skill_value">{{ skill.value }}</span>
-          <span class="skill_cost">{{ skill.cost_up }}</span>
-          <span class="skill_button"><button v-on:click="training_increase" :skill="skill.key" :class="skill.increase">+</button></span>
-          <span class="skill_button"><button v-on:click="training_decrease" :skill="skill.key" :class="skill.decrease">-</button></span>
-          <span class="skill_cost"></span>
-        </li>
-      </ul>
-
-      Unusable
-
-      <ul>
-        <li v-for="skill in unusable_skills">
-          <span class="skill_name">{{ skill.name }}</span>
-          <span class="skill_value">{{ skill.value }}</span>
-          <span class="skill_cost">{{ skill.up }}</span>
-          <span class="skill_button"><button v-on:click="training_increase" :skill="skill.key" :class="skill.increase">+</button></span>
-          <span class="skill_button"><button v-on:click="training_decrease" :skill="skill.key" :class="skill.decrease">-</button></span>
-          <span class="skill_cost"></span>
-
-        </li>
-      </ul> -->
+    <table>
+      <tr><td colspan="6">Specialized</td></tr>
+      <tr v-for="skill in specialized_skills" is="skill" :skill="skill"></tr>
+      <tr><td colspan="6">Trained</td></tr>
+      <tr v-for="skill in trained_skills" is="skill" :skill="skill"></tr>
+      <tr><td colspan="6">Untrained</td></tr>
+      <tr v-for="skill in untrained_skills" is="skill" :skill="skill"></tr>
+      <tr><td colspan="6">Unusable</td></tr>
+      <tr v-for="skill in unusable_skills" is="skill" :skill="skill"></tr>
+    </table>
   </div>
 </div>
 
