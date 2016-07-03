@@ -646,15 +646,15 @@ var vm = new Vue({
       var extra = this.attr_sum - attr_max;
 
       while (extra > 0) {
-        _.each(vals, function(v) {
-          if (vals[j] <= 10) continue;
-          --vals[j];
+        for (var i = 0; i < vals.length; i++) {
+          if (vals[i] <= 10) continue;
+          --vals[i];
           extra -= 1;
-        })
+        }
       }
 
-      for (var k = 0; k < to_dampen.length; k++) {
-        this.attributes[to_dampen[k].key].base = vals[k];
+      for (var j = 0; j < to_dampen.length; j++) {
+        this.attributes[to_dampen[j].key].base = vals[j];
       }
     },
     reset_skills: function(event) {
