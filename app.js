@@ -257,192 +257,230 @@ var vm = new Vue({
       alchemy: {
         key: 'alchemy',
         name: 'Alchemy',
-        training: 'unusable'
+        training: 'unusable',
+        value: 0
       },
 	    arcane_lore: {
         key: 'arcane_lore',
         name: 'Arcane Lore',
-        training: 'trained'
+        training: 'trained',
+        value: 0
       },
 	    armor_tinkering: {
         key: 'armor_tinkering',
         name: 'Armor Tinkering',
-        training: 'untrained'
+        training: 'untrained',
+        value: 0
       },
 	    assess_creature: {
         key: 'assess_creature',
         name: 'Assess Creature',
-        training: 'unusable'
+        training: 'unusable',
+        value: 0
       },
 	    assess_person: {
         key: 'assess_person',
         name: 'Assess Person',
-        training: 'unusable'
+        training: 'unusable',
+        value: 0
       },
 	    cooking: {
         key: 'cooking',
         name: 'Cooking',
-        training: 'unusable'
+        training: 'unusable',
+        value: 0
       },
 	    creature_enchantment: {
         key: 'creature_enchantment',
         name: 'Creature Enchantment',
-        training: 'unusable' // default: unusable
+        training: 'unusable',
+        value: 0
       },
 	    deception: {
         key: 'deception',
         name: 'Deception',
-        training: 'unusable'
+        training: 'unusable',
+        value: 0
       },
 	    dual_wield: {
         key: 'dual_wield',
         name: 'Dual Wield',
-        training: 'unusable'
+        training: 'unusable',
+        value: 0
       },
 	    dirty_fighting: {
         key: 'dirty_fighting',
         name: 'Dirty Fighting',
-        training: 'unusable'
+        training: 'unusable',
+        value: 0
       },
 	    finesse_weapons: {
         key: 'finesse_weapons',
         name: 'Finesse Weapons',
-        training: 'untrained'
+        training: 'untrained',
+        value: 0
       },
 	    fletching: {
         key: 'fletching',
         name: 'Fletching',
-        training: 'unusable'
+        training: 'unusable',
+        value: 0
       },
 	    healing: {
         key: 'healing',
         name: 'Healing',
-        training: 'unusable'
+        training: 'unusable',
+        value: 0
       },
 	    heavy_weapons: {
         key: 'heavy_weapons',
         name: 'Heavy Weapons',
-        training: 'untrained'
+        training: 'untrained',
+        value: 0
       },
 	    item_enchantment: {
         key: 'item_enchantment',
         name: 'Item Enchantment',
-        training: 'unusable' // default: unusable
+        training: 'unusable',
+        value: 0
       },
 	    item_tinkering: {
         key: 'item_tinkering',
         name: 'Item Tinkering',
-        training: 'untrained'
+        training: 'untrained',
+        value: 0
       },
 	    jump: {
         key: 'jump',
         name: 'Jump',
-        training: 'trained'
+        training: 'trained',
+        value: 0
       },
 	    leadership: {
         key: 'leadership',
         name: 'Leadership',
-        training: 'untrained'
+        training: 'untrained',
+        value: 0
       },
 	    life_magic: {
         key: 'life_magic',
         name: 'Life Magic',
-        training: 'unusable' // default: unusable
+        training: 'unusable',
+        value: 0
       },
 	    light_weapons: {
         key: 'light_weapons',
         name: 'Light Weapons',
-        training: 'untrained'
+        training: 'untrained',
+        value: 0
       },
 	    lockpick: {
         key: 'lockpick',
         name: 'Lockpick',
-        training: 'unusable'
+        training: 'unusable',
+        value: 0
       },
 	    loyalty: {
         key: 'loyalty',
         name: 'Loyalty',
-        training: 'trained'
+        training: 'trained',
+        value: 0
       },
 	    magic_defense: {
         key: 'magic_defense',
         name: 'Magic Defense',
-        training: 'trained'
+        training: 'trained',
+        value: 0
       },
 	    magic_item_tinkering: {
         key: 'magic_item_tinkering',
         name: 'Magic Item Tinkering',
-        training: 'untrained'
+        training: 'untrained',
+        value: 0
       },
 	    mana_conversion: {
         key: 'mana_conversion',
         name: 'Mana Conversion',
-        training: 'unusable'
+        training: 'unusable',
+        value: 0
       },
 	    melee_defense: {
         key: 'melee_defense',
         name: 'Melee Defense',
-        training: 'untrained' // default: untrained
+        training: 'untrained',
+        value: 0
       },
 	    missile_defense: {
         key: 'missile_defense',
         name: 'Missile Defense',
-        training: 'untrained'
+        training: 'untrained',
+        value: 0
       },
 	    missile_weapons: {
         key: 'missile_weapons',
         name: 'Missile Weapons',
-        training: 'untrained' // default: untrained
+        training: 'untrained',
+        value: 0
       },
 	    recklessness: {
         key: 'recklessness',
         name: 'Recklessness',
-        training: 'unusable'
+        training: 'unusable',
+        value: 0
       },
 	    run: {
         key: 'run',
         name: 'Run',
-        training: 'trained'
+        training: 'trained',
+        value: 0
       },
 	    salvaging: {
         key: 'salvaging',
         name: 'Salvaging',
-        training: 'trained'
+        training: 'trained',
+        value: 0
       },
 	    shield: {
         key: 'shield',
         name: 'Shield',
-        training: 'untrained'
+        training: 'untrained',
+        value: 0
       },
 	    sneak_attack: {
         key: 'sneak_attack',
         name: 'Sneak Attack',
-        training: 'unusable'
+        training: 'unusable',
+        value: 0
       },
 	    summoning: {
         key: 'summoning',
         name: 'Summoning',
-        training: 'untrained' // default: untrained
+        training: 'untrained',
+        value: 0
       },
 	    two_handed_combat: {
         key: 'two_handed_combat',
         name: 'Two Handed Combat',
-        training: 'untrained'
+        training: 'untrained',
+        value: 0
       },
 	    void_magic: {
         key: 'void_magic',
         name: 'Void Magic',
-        training: 'unusable' // default: unusable
+        training: 'unusable',
+        value: 0
       },
 	    war_magic: {
         key: 'war_magic',
         name: 'War Magic',
-        training: 'unusable' // default: unusable
+        training: 'unusable',
+        value: 0
       },
 	    weapon_tinkering: {
         key: 'weapon_tinkering',
         name: 'Weapon Tinkering',
-        training: 'untrained'
+        training: 'untrained',
+        value: 0
       }
     }
   },
